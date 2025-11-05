@@ -1,7 +1,7 @@
 -- Migration: Enable RLS and create initial policies
 -- Description: Set up initial RLS policies for all tables (will be restricted later)
 -- Date: 2025-01-05
--- Note: These policies are permissive for development. See migration 20250105000000_restrict_rls_policies.sql for security updates
+-- Note: These policies are permissive for development. See migration 20250105000005_restrict_rls_policies.sql for security updates
 
 -- Companies policies
 CREATE POLICY IF NOT EXISTS "Allow anon to select companies" ON public.companies

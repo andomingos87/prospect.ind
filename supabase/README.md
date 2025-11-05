@@ -10,7 +10,7 @@ As migrations são organizadas por data/hora no formato `YYYYMMDDHHMMSS_descript
 - `20250105000002_create_contacts_table.sql` - Criação da tabela contacts
 - `20250105000003_create_classifications_table.sql` - Criação da tabela classifications
 - `20250105000004_enable_rls_initial_policies.sql` - Habilitação de RLS e políticas iniciais
-- `20250105000000_restrict_rls_policies.sql` - Restrição de políticas RLS para segurança
+- `20250105000005_restrict_rls_policies.sql` - Restrição de políticas RLS para segurança (executa após as políticas iniciais)
 
 ## Como Aplicar Migrations
 
@@ -125,6 +125,6 @@ SELECT * FROM supabase_migrations.schema_migrations ORDER BY version;
 
 ## Segurança
 
-- A migration `20250105000000_restrict_rls_policies.sql` remove permissões de escrita da role `anon`
+- A migration `20250105000005_restrict_rls_policies.sql` remove permissões de escrita da role `anon`
 - Após aplicar esta migration, o backend **DEVE** usar `SUPABASE_SERVICE_KEY` para todas as operações
 - Verifique `docs/RLS_LGPD.md` para mais detalhes sobre políticas de segurança

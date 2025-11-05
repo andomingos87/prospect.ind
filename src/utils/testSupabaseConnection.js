@@ -9,6 +9,20 @@ async function testConnection() {
 
   try {
     const result = await testSupabaseConnection();
+
+    // Check the success field from the result
+    if (!result.success) {
+      // eslint-disable-next-line no-console
+      console.error('❌', result.message);
+      if (result.error) {
+        // eslint-disable-next-line no-console
+        console.error('Error details:', result.error);
+      }
+      // eslint-disable-next-line no-console
+      console.log('📍 Supabase URL:', result.url);
+      return false;
+    }
+
     // eslint-disable-next-line no-console
     console.log('✅', result.message);
     // eslint-disable-next-line no-console
