@@ -1,0 +1,173 @@
+{
+	"meta": {
+		"generatedAt": "2025-11-05T01:45:40.395Z",
+		"tasksAnalyzed": 20,
+		"totalTasks": 20,
+		"analysisCount": 20,
+		"thresholdScore": 5,
+		"projectName": "Taskmaster",
+		"usedResearch": false
+	},
+	"complexityAnalysis": [
+		{
+			"taskId": 1,
+			"taskTitle": "Configurar estrutura inicial do projeto",
+			"complexityScore": 3,
+			"recommendedSubtasks": 4,
+			"expansionPrompt": "Divida em: 1) Criar estrutura de diretórios e package.json, 2) Instalar e configurar dependências básicas (express, dotenv, cors, helmet), 3) Configurar scripts npm e arquivos de configuração, 4) Criar documentação inicial (.gitignore, README.md)",
+			"reasoning": "Tarefa básica de setup de projeto Node.js. Baixa complexidade técnica, mas foundational. Múltiplas subtarefas independentes facilitam paralelização."
+		},
+		{
+			"taskId": 2,
+			"taskTitle": "Configurar banco de dados Supabase",
+			"complexityScore": 6,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Divida em: 1) Criar projeto Supabase e configurar conexão, 2) Implementar schema companies com índices, 3) Implementar schema contacts com relacionamentos, 4) Implementar schema classifications, 5) Configurar RLS policies para LGPD",
+			"reasoning": "Complexidade moderada-alta. Requer conhecimento de Supabase, design de schema relacional, índices de performance e políticas de segurança RLS para LGPD compliance."
+		},
+		{
+			"taskId": 3,
+			"taskTitle": "Implementar sistema de configuração de filtros",
+			"complexityScore": 5,
+			"recommendedSubtasks": 4,
+			"expansionPrompt": "Divida em: 1) Criar módulo de validação de filtros, 2) Implementar persistência de configurações no banco, 3) Criar lógica de exclusão automática de segmentos não permitidos, 4) Implementar API endpoints para CRUD de filtros",
+			"reasoning": "Complexidade moderada. Requer validação robusta, persistência de dados e lógica de negócio específica para exclusão de fabricantes de portas/portões."
+		},
+		{
+			"taskId": 4,
+			"taskTitle": "Integrar API de busca web (SerpAPI/Serper.dev)",
+			"complexityScore": 7,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Divida em: 1) Configurar clientes para SerpAPI e Serper.dev, 2) Implementar sistema de fallback entre APIs, 3) Criar gerador de queries de busca baseado em filtros, 4) Implementar rate limiting e tratamento de erros, 5) Configurar cache local para otimização de custos, 6) Implementar monitoramento de quotas de API",
+			"reasoning": "Alta complexidade. Requer integração com APIs externas, tratamento de falhas, otimização de custos, cache inteligente e múltiplos providers com fallback."
+		},
+		{
+			"taskId": 5,
+			"taskTitle": "Desenvolver parser de resultados de busca",
+			"complexityScore": 6,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Divida em: 1) Implementar extração básica de dados (nome, website, localização), 2) Criar sistema de limpeza e normalização de dados, 3) Implementar detecção e filtragem de resultados irrelevantes, 4) Validar e normalizar URLs brasileiras, 5) Criar testes para diferentes formatos de resultados",
+			"reasoning": "Complexidade moderada-alta. Requer processamento de texto, regex complexos, validação de domínios brasileiros e lógica para filtrar marketplaces/diretórios."
+		},
+		{
+			"taskId": 6,
+			"taskTitle": "Implementar módulo de classificação por IA",
+			"complexityScore": 8,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Divida em: 1) Configurar cliente OpenAI e estruturar prompts, 2) Implementar sistema de scoring 0-100 com justificativas, 3) Criar batch processing para otimização de custos, 4) Implementar validação de respostas e fallback, 5) Adicionar monitoramento de custos e performance, 6) Criar sistema de refinamento de prompts baseado em feedback",
+			"reasoning": "Alta complexidade. Requer engenharia de prompts sofisticada, processamento em lote, validação de outputs de IA, monitoramento de custos e otimização contínua."
+		},
+		{
+			"taskId": 7,
+			"taskTitle": "Desenvolver sistema de enriquecimento de dados",
+			"complexityScore": 7,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Divida em: 1) Integrar APIs de enriquecimento (Hunter.io, Apollo.io), 2) Implementar web scraping respeitando robots.txt, 3) Buscar perfis LinkedIn da empresa, 4) Validar formatos de email e telefone brasileiros, 5) Implementar rate limiting e tratamento de bloqueios",
+			"reasoning": "Alta complexidade. Múltiplas integrações, web scraping ético, validação de dados brasileiros, rate limiting complexo e potenciais bloqueios anti-bot."
+		},
+		{
+			"taskId": 8,
+			"taskTitle": "Criar sistema de armazenamento de leads",
+			"complexityScore": 5,
+			"recommendedSubtasks": 4,
+			"expansionPrompt": "Divida em: 1) Implementar models e services para persistência, 2) Criar sistema de detecção de duplicatas por domínio, 3) Implementar soft delete para LGPD compliance, 4) Adicionar logs de auditoria e campos de tracking",
+			"reasoning": "Complexidade moderada. Requer design de models, lógica de deduplicação, compliance LGPD e auditoria. Bem definido mas crítico para integridade dos dados."
+		},
+		{
+			"taskId": 9,
+			"taskTitle": "Implementar exportação para CSV",
+			"complexityScore": 4,
+			"recommendedSubtasks": 3,
+			"expansionPrompt": "Divida em: 1) Criar endpoint de exportação com filtros, 2) Implementar geração de CSV com encoding UTF-8, 3) Adicionar validação de filtros de exportação e headers apropriados",
+			"reasoning": "Baixa-moderada complexidade. Funcionalidade bem definida, mas requer atenção ao encoding UTF-8 para caracteres brasileiros e filtros adequados."
+		},
+		{
+			"taskId": 10,
+			"taskTitle": "Desenvolver sistema de webhook para CRM",
+			"complexityScore": 6,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Divida em: 1) Criar configuração de webhooks de destino, 2) Implementar job queue para envio confiável, 3) Adicionar suporte a autenticação (basic/token), 4) Implementar retry logic para falhas, 5) Criar logs detalhados e campos customizáveis",
+			"reasoning": "Complexidade moderada-alta. Requer job queue, retry logic robusto, múltiplos tipos de autenticação, logging detalhado e flexibilidade para diferentes CRMs."
+		},
+		{
+			"taskId": 11,
+			"taskTitle": "Criar interface web para configuração",
+			"complexityScore": 7,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Divida em: 1) Configurar projeto React/Vue.js e estrutura, 2) Implementar autenticação e proteção de rotas, 3) Criar interface de configuração de filtros, 4) Implementar visualização de leads em tabela, 5) Criar controles de processo (iniciar/parar), 6) Implementar configuração de webhooks e exportação",
+			"reasoning": "Alta complexidade. SPA completa com múltiplas funcionalidades, autenticação, estado complexo, integração com backend e design responsivo."
+		},
+		{
+			"taskId": 12,
+			"taskTitle": "Implementar sistema de relatórios básicos",
+			"complexityScore": 5,
+			"recommendedSubtasks": 4,
+			"expansionPrompt": "Divida em: 1) Criar endpoints para métricas básicas, 2) Implementar cálculos de conversão e ROI, 3) Integrar Chart.js para visualizações, 4) Adicionar filtros por período e segmento",
+			"reasoning": "Complexidade moderada. Requer agregações de dados, cálculos de métricas, visualizações e filtros temporais. Funcionalidade bem definida."
+		},
+		{
+			"taskId": 13,
+			"taskTitle": "Implementar sistema de jobs e processamento assíncrono",
+			"complexityScore": 8,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Divida em: 1) Configurar Redis e Bull para job queue, 2) Criar workers para busca, classificação e enriquecimento, 3) Implementar progress tracking em tempo real, 4) Criar interface de monitoramento de jobs, 5) Implementar retry automático e dead letter queue, 6) Configurar escalabilidade horizontal de workers",
+			"reasoning": "Alta complexidade. Sistema crítico para performance, requer Redis/Bull, múltiplos workers, monitoramento em tempo real, retry logic e escalabilidade."
+		},
+		{
+			"taskId": 14,
+			"taskTitle": "Implementar conformidade LGPD",
+			"complexityScore": 7,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Divida em: 1) Implementar fluxo de consentimento explícito, 2) Criar endpoint para direito ao esquecimento, 3) Implementar anonização automática de dados, 4) Adicionar logs de auditoria para acesso a dados, 5) Criar termos de uso e política de privacidade, 6) Implementar notificação de vazamentos",
+			"reasoning": "Alta complexidade. Compliance legal crítico, requer conhecimento jurídico, múltiplos endpoints, automação de anonização e auditoria completa."
+		},
+		{
+			"taskId": 15,
+			"taskTitle": "Configurar autenticação e autorização",
+			"complexityScore": 6,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Divida em: 1) Implementar JWT com refresh tokens, 2) Criar sistema de roles (admin/operator/viewer), 3) Proteger rotas e implementar middleware de autorização, 4) Adicionar rate limiting por usuário e logs de segurança, 5) Integrar com Supabase Auth se viável",
+			"reasoning": "Complexidade moderada-alta. Sistema de segurança crítico, múltiplos roles, JWT com refresh, rate limiting e potencial integração com Supabase Auth."
+		},
+		{
+			"taskId": 16,
+			"taskTitle": "Implementar monitoramento e logging",
+			"complexityScore": 5,
+			"recommendedSubtasks": 4,
+			"expansionPrompt": "Divida em: 1) Configurar Winston/Pino para logging estruturado, 2) Implementar métricas de performance e health checks, 3) Configurar alertas para erros críticos, 4) Criar dashboard básico de monitoramento",
+			"reasoning": "Complexidade moderada. Logging estruturado, métricas, health checks e alertas. Funcionalidade bem definida mas importante para operação."
+		},
+		{
+			"taskId": 17,
+			"taskTitle": "Otimizar performance e custos de APIs",
+			"complexityScore": 7,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Divida em: 1) Implementar cache inteligente com Redis, 2) Otimizar queries e implementar rate limiting adaptativo, 3) Criar sistema de fallback entre APIs, 4) Implementar compressão e batch processing, 5) Adicionar monitoramento de custos e alertas",
+			"reasoning": "Alta complexidade. Otimização crítica para viabilidade econômica, cache inteligente, rate limiting adaptativo, múltiplas APIs e monitoramento de custos."
+		},
+		{
+			"taskId": 18,
+			"taskTitle": "Implementar testes automatizados",
+			"complexityScore": 6,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Divida em: 1) Configurar Jest e estrutura de testes, 2) Implementar testes unitários para services e utils, 3) Criar testes de integração para APIs e banco, 4) Implementar testes E2E para fluxos principais, 5) Configurar CI/CD com coverage reporting",
+			"reasoning": "Complexidade moderada-alta. Suíte completa de testes, mocks para APIs externas, coverage de 80%+, CI/CD. Essencial para qualidade mas trabalhoso."
+		},
+		{
+			"taskId": 19,
+			"taskTitle": "Configurar ambiente de produção",
+			"complexityScore": 6,
+			"recommendedSubtasks": 5,
+			"expansionPrompt": "Divida em: 1) Configurar deploy automatizado (Vercel/Railway), 2) Implementar variáveis de ambiente e SSL/TLS, 3) Configurar backup automatizado do banco, 4) Implementar CDN e rolling deployments, 5) Configurar monitoramento de produção",
+			"reasoning": "Complexidade moderada-alta. Deploy automatizado, SSL, backups, CDN, rolling deployments. Múltiplas tecnologias e configurações críticas."
+		},
+		{
+			"taskId": 20,
+			"taskTitle": "Realizar testes de validação e refinamento",
+			"complexityScore": 8,
+			"recommendedSubtasks": 6,
+			"expansionPrompt": "Divida em: 1) Executar testes com dados reais de diferentes segmentos, 2) Validar qualidade e precisão dos leads encontrados, 3) Testar performance com carga de 10.000 leads/mês, 4) Ajustar filtros baseado nos resultados, 5) Validar métricas de sucesso do PRD, 6) Otimizar sistema baseado nos resultados",
+			"reasoning": "Alta complexidade. Validação final com dados reais, múltiplos segmentos industriais, teste de carga, ajustes baseados em resultados e validação de todas as métricas do PRD."
+		}
+	]
+}

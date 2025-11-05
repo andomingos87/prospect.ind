@@ -1,0 +1,21 @@
+{
+  "watch": [
+    "src",
+    "config",
+    "utils"
+  ],
+  "ext": "js,json",
+  "ignore": [
+    "node_modules",
+    "tests",
+    ".taskmaster",
+    "*.log"
+  ],
+  "exec": "node src/index.js",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "restartable": "rs",
+  "delay": 1000,
+  "verbose": true
+}

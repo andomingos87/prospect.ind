@@ -1,0 +1,37 @@
+{
+  "name": "prospect-ai-system",
+  "version": "1.0.0",
+  "description": "Sistema IA de Prospecção de Indústrias - Automatiza a geração de leads qualificados de indústrias para desenvolvedores e agências de tecnologia",
+  "main": "src/index.js",
+  "type": "module",
+  "author": "Anderson Domingos",
+  "license": "ISC",
+  "keywords": [
+    "prospecting",
+    "ai",
+    "leads",
+    "industrial",
+    "automation"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "build": "echo 'No build step required for this project'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "echo 'Linting not configured yet'",
+    "health": "curl http://localhost:3000/health"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
