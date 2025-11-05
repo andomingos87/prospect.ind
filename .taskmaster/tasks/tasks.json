@@ -26,9 +26,7 @@
             "id": 2,
             "title": "Instalar e configurar dependências básicas",
             "description": "Instalar e configurar as dependências essenciais: express, dotenv, cors e helmet para o funcionamento básico da aplicação",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Instalar via npm: express (framework web), dotenv (variáveis de ambiente), cors (cross-origin), helmet (segurança HTTP). Criar arquivo .env.example com variáveis necessárias. Configurar middleware básico no arquivo principal.\n<info added on 2025-11-05T02:14:12.353Z>\nVou analisar o projeto para entender sua estrutura atual antes de gerar a atualização da subtask.Com base na análise do código e arquivos do projeto, posso ver que todas as dependências foram instaladas corretamente e a estrutura básica está funcionando. Aqui está o texto que deve ser adicionado à subtask:\n\nCONCLUSÃO: Subtask 1.2 totalmente concluída. Todas as dependências principais (express v5.1.0, dotenv v17.2.3, cors v2.8.5, helmet v8.1.0) foram instaladas e configuradas corretamente no package.json. Arquivo .env.example criado com estrutura completa incluindo variáveis para aplicação, Supabase, APIs de busca (SerpAPI/Serper), IA (Anthropic/OpenAI) e enriquecimento de dados (Hunter/Clearbit), além de configurações opcionais para Task Master AI. Implementação finalizada em src/index.js com servidor Express totalmente funcional incluindo: middlewares de segurança (helmet), CORS, parsing de JSON/URL-encoded, endpoints /health e /, handler 404 e error handler com stack trace em desenvolvimento. Arquivo config/index.js criado com configuração centralizada, validação de variáveis de ambiente obrigatórias e regras de negócio. Servidor testado e operacional em http://localhost:3000 com interface de usuário informativa e shutdown graceful configurado.\n</info added on 2025-11-05T02:14:12.353Z>",
             "status": "done",
             "testStrategy": "Verificar se todas as dependências foram instaladas sem erros e se o servidor Express básico consegue inicializar",
@@ -39,9 +37,7 @@
             "id": 3,
             "title": "Configurar scripts npm e arquivos de configuração",
             "description": "Configurar scripts npm para desenvolvimento, build e testes, além de arquivos de configuração necessários",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Adicionar scripts no package.json: 'dev' (nodemon), 'start' (node), 'build', 'test'. Instalar nodemon como dev dependency. Criar arquivo de configuração básico em /config com variáveis de ambiente e configurações da aplicação.\n<info added on 2025-11-05T02:19:38.039Z>\nVou analisar o projeto primeiro para entender melhor a estrutura atual antes de atualizar a subtask.Com base na análise do código e na solicitação do usuário, vou gerar o texto de atualização da subtask:\n\n✅ IMPLEMENTAÇÃO CONCLUÍDA - Scripts configurados em package.json com comando 'start' para produção executando node src/index.js, 'dev' usando nodemon src/index.js para desenvolvimento com hot reload, e scripts auxiliares 'build', 'test', 'lint' e 'health' (curl para endpoint /health). Nodemon v3.1.10 instalado como devDependency em package.json. Arquivo nodemon.json criado com configuração completa: watch em diretórios src/, config/ e utils/; extensões .js e .json monitoradas; ignorando node_modules, tests, .taskmaster e arquivos *.log; configurado delay de 1s, modo verbose ativo e variável NODE_ENV=development. Ambos os scripts testados e validados: 'npm run dev' inicializa servidor com nodemon ativo e hot reload funcionando corretamente, 'npm start' executa em modo produção. Servidor Express configurado na porta 3000 com endpoints /health e / funcionais. Sistema pronto para desenvolvimento com recarregamento automático.\n</info added on 2025-11-05T02:19:38.039Z>",
             "status": "done",
             "testStrategy": "Testar se npm run dev e npm start funcionam corretamente. Verificar se as configurações são carregadas adequadamente",
@@ -52,9 +48,7 @@
             "id": 4,
             "title": "Criar documentação inicial",
             "description": "Criar arquivos .gitignore e README.md com documentação básica do projeto",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Criar .gitignore com padrões para Node.js (node_modules, .env, logs, etc). Criar README.md com descrição do projeto, instruções de instalação, execução e estrutura de pastas. Incluir comandos npm disponíveis e requisitos do sistema.\n<info added on 2025-11-05T02:22:35.189Z>\nCom base na análise do código e na solicitação do usuário, posso confirmar que a documentação foi implementada com sucesso. Os arquivos .gitignore e README.md foram criados conforme especificado:\n\n**Atualização concluída com sucesso**. O arquivo .gitignore foi expandido além dos padrões básicos do Node.js para incluir categorias importantes como diretórios de build (dist/, build/, coverage/), arquivos temporários (*.tmp, *.temp, .cache/), arquivos de banco (*.db, *.sqlite), credenciais de segurança (*.pem, *.key, credentials.json), exports de dados (exports/, *.csv, *.xlsx) e arquivos de teste (test-results/, .nyc_output/). O README.md foi desenvolvido como documentação profissional completa incluindo badges do Node.js e licença, descrição detalhada do projeto e seus objetivos, funcionalidades MVP documentadas, estrutura de diretórios organizada, requisitos do sistema especificados, instruções de instalação em 3 etapas claras, comandos npm documentados, endpoints da API com exemplos JSON, seção de segurança implementada, regras de negócio definindo segmentos-alvo e excluídos, metas quantificadas (50+ leads/mês, ≥90% precisão), tecnologias utilizadas listadas, roadmap completo com checklist de progresso, informações de licença ISC e identificação do autor Anderson Domingos. A documentação está profissional, completa e alinhada com a estrutura do projeto existente.\n</info added on 2025-11-05T02:22:35.189Z>",
             "status": "done",
             "testStrategy": "Verificar se .gitignore ignora arquivos corretos e se README.md contém informações suficientes para setup do projeto",
@@ -74,9 +68,7 @@
         "details": "Criar tabelas: companies (id, name, website, location, size, segment, revenue_estimate, created_at), contacts (id, company_id, email, phone, linkedin, type), classifications (id, company_id, relevance_score, reason, ai_model_used). Configurar RLS policies para LGPD compliance. Criar índices para busca eficiente.",
         "testStrategy": "Testar conexão com Supabase client. Verificar inserção, atualização e consulta de dados. Validar políticas de segurança RLS.",
         "priority": "high",
-        "dependencies": [
-          "1"
-        ],
+        "dependencies": ["1"],
         "status": "pending",
         "subtasks": [
           {
@@ -84,8 +76,8 @@
             "title": "Criar projeto Supabase e configurar conexão",
             "description": "Criar novo projeto no Supabase, obter credenciais de API e configurar conexão no aplicativo",
             "dependencies": [],
-            "details": "Criar conta no Supabase se necessário, criar novo projeto, copiar URL e chave anônima, configurar variáveis de ambiente (.env), instalar biblioteca @supabase/supabase-js, criar cliente Supabase e testar conexão básica",
-            "status": "pending",
+            "details": "Criar conta no Supabase se necessário, criar novo projeto, copiar URL e chave anônima, configurar variáveis de ambiente (.env), instalar biblioteca @supabase/supabase-js, criar cliente Supabase e testar conexão básica\n<info added on 2025-11-05T03:07:21.017Z>\nImplementação concluída: biblioteca @supabase/supabase-js v2.79.0 instalada e cliente configurado em src/config/supabase.js com dotenv e função testSupabaseConnection validada. Credenciais documentadas em .env e .env.example. Testes unitários em tests/supabase.test.js e script utilitário src/utils/testSupabaseConnection.js confirmam conexão (4/4 testes, lint OK, cobertura 83,33% em config/supabase.js). Pronto para avançar para a subtarefa 2.2 e modelar o schema companies.\n</info added on 2025-11-05T03:07:21.017Z>",
+            "status": "done",
             "testStrategy": "Testar conexão com Supabase usando cliente configurado, verificar se credenciais estão corretas",
             "parentId": "undefined"
           },
@@ -93,9 +85,7 @@
             "id": 2,
             "title": "Implementar schema companies com índices",
             "description": "Criar tabela companies com todos os campos necessários e configurar índices para performance",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Criar tabela companies com campos: id (UUID, primary key), name (text), website (text), location (text), size (enum), segment (text), revenue_estimate (numeric), created_at (timestamp). Criar índices em location, size, segment para otimizar consultas de filtros",
             "status": "pending",
             "testStrategy": "Inserir dados de teste na tabela companies, verificar se índices estão funcionando com EXPLAIN ANALYZE",
@@ -105,9 +95,7 @@
             "id": 3,
             "title": "Implementar schema contacts com relacionamentos",
             "description": "Criar tabela contacts com foreign key para companies e todos os campos necessários",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Criar tabela contacts com campos: id (UUID, primary key), company_id (UUID, foreign key para companies), email (text), phone (text), linkedin (text), type (enum). Configurar relacionamento com ON DELETE CASCADE e índice em company_id",
             "status": "pending",
             "testStrategy": "Inserir contatos vinculados a empresas, testar relacionamento e integridade referencial",
@@ -117,9 +105,7 @@
             "id": 4,
             "title": "Implementar schema classifications",
             "description": "Criar tabela classifications para armazenar pontuações de relevância geradas por IA",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Criar tabela classifications com campos: id (UUID, primary key), company_id (UUID, foreign key para companies), relevance_score (numeric), reason (text), ai_model_used (text), created_at (timestamp). Configurar índices em company_id e relevance_score",
             "status": "pending",
             "testStrategy": "Inserir classificações de teste, verificar relacionamento com companies e performance de consultas por score",
@@ -129,11 +115,7 @@
             "id": 5,
             "title": "Configurar RLS policies para LGPD",
             "description": "Implementar Row Level Security policies para garantir compliance com LGPD",
-            "dependencies": [
-              2,
-              3,
-              4
-            ],
+            "dependencies": [2, 3, 4],
             "details": "Habilitar RLS em todas as tabelas, criar policies para permitir acesso apenas a usuários autenticados, implementar políticas de delete/update restritivas, configurar audit trail para operações de dados pessoais, documentar políticas de retenção de dados",
             "status": "pending",
             "testStrategy": "Testar acesso com usuários autenticados e não autenticados, verificar se policies bloqueiam acessos não autorizados",
@@ -151,9 +133,7 @@
         "details": "Desenvolver módulo de filtros com campos: localização (estado/cidade), porte da empresa (micro/pequena/média/grande), segmento industrial (automação, metalurgia, estruturas metálicas), faturamento estimado. Implementar validação de filtros e salvamento de configurações. Excluir fabricantes de portas/portões automaticamente.",
         "testStrategy": "Testar validação de filtros inválidos. Verificar salvamento e carregamento de configurações. Validar exclusão automática de segmentos não permitidos.",
         "priority": "medium",
-        "dependencies": [
-          "2"
-        ],
+        "dependencies": ["2"],
         "status": "pending",
         "subtasks": [
           {
@@ -170,9 +150,7 @@
             "id": 2,
             "title": "Implementar persistência de configurações no banco",
             "description": "Criar estrutura de banco de dados e serviços para salvar e recuperar configurações de filtros dos usuários",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Criar tabelas para armazenar configurações de filtros por usuário. Implementar models/schemas para filtros salvos. Desenvolver services para CRUD de configurações incluindo salvamento, carregamento, atualização e exclusão. Implementar serialização/deserialização segura dos filtros complexos.",
             "status": "pending",
             "testStrategy": "Testar salvamento e carregamento de diferentes tipos de filtros. Verificar integridade dos dados persistidos. Validar operações CRUD completas.",
@@ -182,9 +160,7 @@
             "id": 3,
             "title": "Criar lógica de exclusão automática de segmentos não permitidos",
             "description": "Implementar sistema para filtrar automaticamente fabricantes de portas/portões e outros segmentos não desejados",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Desenvolver lista de palavras-chave e padrões para identificar fabricantes de portas/portões. Implementar algoritmo de filtragem que analise descrição da empresa, nome e segmento. Criar sistema configurável para adicionar/remover segmentos excluídos. Implementar logs para auditoria de exclusões automáticas.",
             "status": "pending",
             "testStrategy": "Testar identificação correta de fabricantes de portas/portões. Verificar que empresas válidas não são excluídas incorretamente. Validar logs de exclusão funcionando.",
@@ -194,10 +170,7 @@
             "id": 4,
             "title": "Implementar API endpoints para CRUD de filtros",
             "description": "Desenvolver endpoints REST completos para gerenciamento de configurações de filtros via API",
-            "dependencies": [
-              2,
-              3
-            ],
+            "dependencies": [2, 3],
             "details": "Criar endpoints para: GET /filters (listar filtros salvos), POST /filters (criar novo filtro), PUT /filters/:id (atualizar filtro), DELETE /filters/:id (excluir filtro), POST /filters/validate (validar configuração). Implementar autenticação, autorização e validação de entrada. Adicionar documentação Swagger/OpenAPI.",
             "status": "pending",
             "testStrategy": "Testar todos os endpoints com dados válidos e inválidos. Verificar autenticação e autorização funcionando. Validar respostas de erro apropriadas e códigos HTTP corretos.",
@@ -215,9 +188,7 @@
         "details": "Configurar cliente para SerpAPI ou Serper.dev com fallback. Implementar queries de busca baseadas nos filtros: 'empresa [segmento] [localização] site:com.br'. Adicionar rate limiting e tratamento de erros. Configurar variáveis de ambiente para API keys. Implementar cache local para otimizar custos.",
         "testStrategy": "Testar busca com diferentes combinações de filtros. Verificar rate limiting e handling de erros de API. Validar cache funcionando corretamente.",
         "priority": "high",
-        "dependencies": [
-          "3"
-        ],
+        "dependencies": ["3"],
         "status": "pending",
         "subtasks": [
           {
@@ -234,9 +205,7 @@
             "id": 2,
             "title": "Implementar sistema de fallback entre APIs",
             "description": "Criar mecanismo automático de fallback entre SerpAPI e Serper.dev em caso de falha ou indisponibilidade",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Implementar lógica de priorização entre APIs (SerpAPI como primária, Serper.dev como backup). Detectar falhas por timeout, status HTTP de erro ou rate limiting. Implementar switch automático para API secundária. Adicionar logs detalhados de fallback. Criar configuração para definir ordem de prioridade.",
             "status": "pending",
             "testStrategy": "Simular falhas na API primária e verificar switch automático. Testar diferentes tipos de erro (timeout, 401, 429). Validar logs de fallback sendo gerados.",
@@ -256,10 +225,7 @@
             "id": 4,
             "title": "Implementar rate limiting e tratamento de erros",
             "description": "Criar sistema robusto de rate limiting e tratamento abrangente de erros para as APIs de busca",
-            "dependencies": [
-              1,
-              2
-            ],
+            "dependencies": [1, 2],
             "details": "Implementar rate limiting baseado nos limites das APIs (SerpAPI: 100 req/h gratuito, Serper.dev: 2500 req/mês). Criar fila de requisições com delay automático. Implementar retry exponential backoff para erros temporários. Tratar diferentes tipos de erro (401, 403, 429, 500). Adicionar circuit breaker para APIs que falharem repetidamente. Logs estruturados para debugging.",
             "status": "pending",
             "testStrategy": "Testar comportamento com diferentes tipos de erro HTTP. Verificar rate limiting respeitando limites das APIs. Validar retry logic e circuit breaker funcionando corretamente.",
@@ -269,9 +235,7 @@
             "id": 5,
             "title": "Configurar cache local para otimização de custos",
             "description": "Implementar sistema de cache inteligente para reduzir custos de API e melhorar performance das buscas",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Implementar cache em Redis com TTL configurável (24h padrão). Criar chave de cache baseada em hash da query + filtros. Implementar invalidação automática de cache antigo. Adicionar métricas de cache hit/miss. Configurar compressão para economizar memória. Implementar cache warming para queries frequentes.",
             "status": "pending",
             "testStrategy": "Testar cache hit/miss com queries repetidas. Verificar TTL funcionando corretamente. Validar invalidação automática. Testar performance com cache habilitado vs desabilitado.",
@@ -281,9 +245,7 @@
             "id": 6,
             "title": "Implementar monitoramento de quotas de API",
             "description": "Criar sistema de monitoramento em tempo real das quotas e limites de uso das APIs de busca",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "Implementar tracking de uso de quota em tempo real para cada API. Criar alertas quando atingir 80% da quota mensal. Implementar dashboard para visualizar uso atual vs limites. Adicionar notificações por email/Slack para alertas críticos. Criar relatórios de uso mensal. Implementar auto-switch para API com quota disponível.",
             "status": "pending",
             "testStrategy": "Testar tracking de quota com requisições reais. Verificar alertas sendo disparados nos thresholds corretos. Validar relatórios de uso mensal. Testar auto-switch baseado em quota disponível.",
@@ -301,9 +263,7 @@
         "details": "Implementar parser para extrair: nome da empresa, website, localização, snippet de descrição. Aplicar regex e validações para limpar dados. Detectar e filtrar resultados irrelevantes (diretórios, marketplaces). Normalizar URLs e validar domínios brasileiros (.com.br, .ind.br).",
         "testStrategy": "Testar parser com diferentes formatos de resultados. Verificar limpeza de dados e filtragem de irrelevantes. Validar normalização de URLs.",
         "priority": "medium",
-        "dependencies": [
-          "4"
-        ],
+        "dependencies": ["4"],
         "status": "pending",
         "subtasks": [
           {
@@ -320,9 +280,7 @@
             "id": 2,
             "title": "Criar sistema de limpeza e normalização de dados",
             "description": "Desenvolver módulo para limpar e padronizar os dados extraídos dos resultados de busca",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Implementar regex para limpeza de caracteres especiais, normalização de nomes de empresas, padronização de endereços e formatação consistente de textos. Criar funções para remover duplicatas e consolidar informações similares. Aplicar transformações para garantir qualidade dos dados.",
             "status": "pending",
             "testStrategy": "Testar limpeza com dados sujos e verificar se a normalização está funcionando. Validar remoção de duplicatas e formatação consistente.",
@@ -332,9 +290,7 @@
             "id": 3,
             "title": "Implementar detecção e filtragem de resultados irrelevantes",
             "description": "Criar lógica para identificar e filtrar resultados que não são empresas válidas",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Desenvolver algoritmos para detectar e filtrar diretórios empresariais, marketplaces, classificados e outros tipos de sites irrelevantes. Implementar lista de domínios e padrões a serem excluídos. Criar sistema de scoring para avaliar relevância dos resultados baseado em características do conteúdo.",
             "status": "pending",
             "testStrategy": "Testar filtragem com conjunto de resultados conhecidos contendo sites irrelevantes. Verificar taxa de precisão na detecção de empresas válidas.",
@@ -344,9 +300,7 @@
             "id": 4,
             "title": "Validar e normalizar URLs brasileiras",
             "description": "Implementar validação específica para domínios brasileiros e normalização de URLs",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Criar validadores para domínios brasileiros (.com.br, .ind.br, .org.br, etc.). Implementar normalização de URLs removendo parâmetros desnecessários e padronizando formato. Validar se URLs são acessíveis e correspondem a sites empresariais legítimos. Adicionar verificação de certificados SSL quando disponível.",
             "status": "pending",
             "testStrategy": "Testar validação com diversos tipos de domínios brasileiros. Verificar normalização de URLs e acessibilidade dos sites validados.",
@@ -356,9 +310,7 @@
             "id": 5,
             "title": "Criar testes para diferentes formatos de resultados",
             "description": "Desenvolver suite de testes abrangente para validar o parser com diversos formatos de entrada",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "Criar casos de teste para diferentes estruturas de resultados da API de busca. Implementar testes unitários para cada componente do parser. Criar dados de teste simulando cenários reais e edge cases. Adicionar testes de integração para validar o fluxo completo de parsing e filtragem.",
             "status": "pending",
             "testStrategy": "Executar suite completa de testes com cobertura mínima de 90%. Validar comportamento em cenários de erro e dados malformados.",
@@ -376,9 +328,7 @@
         "details": "Integrar OpenAI API para classificação. Criar prompt estruturado para analisar: descrição da empresa, website, segmento de atuação. Gerar score de relevância (0-100) e justificativa. Implementar batch processing para otimizar custos. Adicionar validação de resposta da IA e fallback para classificação manual.",
         "testStrategy": "Testar classificação com empresas conhecidamente relevantes e irrelevantes. Verificar consistência dos scores. Validar batch processing e tratamento de erros da API.",
         "priority": "high",
-        "dependencies": [
-          "5"
-        ],
+        "dependencies": ["5"],
         "status": "pending",
         "subtasks": [
           {
@@ -395,9 +345,7 @@
             "id": 2,
             "title": "Implementar sistema de scoring 0-100 com justificativas",
             "description": "Criar sistema que gera score de relevância de 0-100 e justificativas detalhadas para cada classificação",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Implementar parser para extrair score numérico e justificativa textual das respostas da IA. Criar validação para garantir scores entre 0-100. Estruturar justificativas com critérios específicos (relevância do segmento, qualidade dos dados, potencial de negócio). Implementar logging detalhado das classificações.",
             "status": "pending",
             "testStrategy": "Validar consistência dos scores para empresas similares. Verificar qualidade das justificativas geradas. Testar edge cases com dados incompletos.",
@@ -407,9 +355,7 @@
             "id": 3,
             "title": "Criar batch processing para otimização de custos",
             "description": "Implementar processamento em lote para reduzir custos da API e melhorar eficiência",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Implementar sistema de filas para agrupar empresas em batches otimizados. Configurar tamanho ideal de batch baseado em limites da API. Implementar retry logic para batches falhados. Adicionar controle de rate limiting e throttling. Criar sistema de priorização para processar empresas mais importantes primeiro.",
             "status": "pending",
             "testStrategy": "Testar processamento de batches grandes. Verificar otimização de custos comparado ao processamento individual. Validar retry logic com falhas simuladas.",
@@ -419,9 +365,7 @@
             "id": 4,
             "title": "Implementar validação de respostas e fallback",
             "description": "Criar sistema de validação das respostas da IA e fallback para classificação manual quando necessário",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Implementar validação de formato das respostas da API. Criar detector de respostas inconsistentes ou de baixa qualidade. Implementar fallback automático para classificação manual quando a IA falha. Criar interface para revisão manual de classificações questionáveis. Adicionar sistema de flags para casos que precisam de intervenção humana.",
             "status": "pending",
             "testStrategy": "Testar validação com respostas malformadas simuladas. Verificar funcionamento do fallback manual. Validar identificação de respostas de baixa qualidade.",
@@ -431,9 +375,7 @@
             "id": 5,
             "title": "Adicionar monitoramento de custos e performance",
             "description": "Implementar sistema de monitoramento para controlar custos da API e performance do módulo",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "Implementar tracking de custos por request e por batch. Criar dashboard para monitorar gastos em tempo real. Implementar alertas para gastos excessivos. Adicionar métricas de performance (tempo de resposta, throughput, taxa de sucesso). Criar relatórios de eficiência e ROI das classificações.",
             "status": "pending",
             "testStrategy": "Verificar precisão do tracking de custos. Testar alertas de gastos. Validar métricas de performance sendo coletadas corretamente.",
@@ -443,9 +385,7 @@
             "id": 6,
             "title": "Criar sistema de refinamento de prompts baseado em feedback",
             "description": "Implementar sistema para melhorar continuamente os prompts baseado em feedback e resultados",
-            "dependencies": [
-              5
-            ],
+            "dependencies": [5],
             "details": "Criar sistema de coleta de feedback sobre qualidade das classificações. Implementar análise de padrões em classificações incorretas. Criar versionamento de prompts para A/B testing. Implementar sistema de learning que ajusta prompts baseado em resultados históricos. Adicionar interface para refinamento manual de prompts pelos usuários.",
             "status": "pending",
             "testStrategy": "Testar coleta e análise de feedback. Verificar versionamento de prompts funcionando. Validar melhorias na qualidade das classificações ao longo do tempo.",
@@ -463,9 +403,7 @@
         "details": "Integrar serviços como Hunter.io, Apollo.io ou similar para encontrar emails corporativos. Implementar web scraping básico para contatos públicos do site da empresa. Buscar perfis LinkedIn da empresa. Validar formato de emails e telefones brasileiros. Implementar rate limiting e respeitar robots.txt.",
         "testStrategy": "Testar enriquecimento com empresas reais. Verificar taxa de sucesso na busca de contatos. Validar formatos de email e telefone. Testar rate limiting.",
         "priority": "medium",
-        "dependencies": [
-          "6"
-        ],
+        "dependencies": ["6"],
         "status": "pending",
         "subtasks": [
           {
@@ -482,9 +420,7 @@
             "id": 2,
             "title": "Implementar web scraping respeitando robots.txt",
             "description": "Desenvolver sistema de web scraping ético para extrair contatos públicos dos sites das empresas",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Implementar parser de robots.txt antes de fazer scraping. Usar bibliotecas como Puppeteer ou Cheerio para extrair contatos de páginas 'Contato', 'Sobre' e 'Equipe'. Respeitar delays entre requests. Implementar user agents rotativos. Criar sistema de cache para evitar re-scraping desnecessário.",
             "status": "pending",
             "testStrategy": "Testar scraping em diferentes estruturas de sites. Verificar se robots.txt é respeitado corretamente. Validar extração de emails e telefones de páginas públicas.",
@@ -494,9 +430,7 @@
             "id": 3,
             "title": "Buscar perfis LinkedIn da empresa",
             "description": "Implementar busca automatizada de perfis LinkedIn das empresas prospectadas",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Usar LinkedIn API oficial quando disponível ou busca programática respeitando termos de uso. Implementar busca por nome da empresa e domínio. Extrair informações públicas como número de funcionários, setor, localização. Implementar sistema de cache para perfis já buscados. Tratar limitações de rate do LinkedIn.",
             "status": "pending",
             "testStrategy": "Testar busca de perfis para empresas conhecidas. Verificar precisão na correspondência empresa-perfil. Validar dados extraídos e tratamento de perfis não encontrados.",
@@ -506,9 +440,7 @@
             "id": 4,
             "title": "Validar formatos de email e telefone brasileiros",
             "description": "Criar sistema de validação específico para formatos de contato brasileiros",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Implementar regex para validação de emails corporativos brasileiros. Criar validador para telefones brasileiros (fixos e celulares) considerando DDDs válidos. Implementar verificação de domínios .com.br, .org.br, etc. Criar score de confiança para contatos encontrados. Filtrar emails genéricos (info@, contato@).",
             "status": "pending",
             "testStrategy": "Testar validação com diversos formatos de email e telefone brasileiros. Verificar detecção de formatos inválidos. Validar score de confiança dos contatos.",
@@ -518,9 +450,7 @@
             "id": 5,
             "title": "Implementar rate limiting e tratamento de bloqueios",
             "description": "Desenvolver sistema robusto de controle de taxa de requisições e tratamento de bloqueios anti-bot",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "Implementar rate limiting configurável por fonte (API, scraping, LinkedIn). Criar sistema de backoff exponencial para retry de requests falhados. Implementar detecção de bloqueios (CAPTCHA, IP ban). Usar proxy rotation quando necessário. Implementar queue system para gerenciar requests de forma distribuída.",
             "status": "pending",
             "testStrategy": "Testar comportamento com rate limits excedidos. Verificar recuperação automática de bloqueios temporários. Validar funcionamento do sistema de retry e backoff.",
@@ -538,9 +468,7 @@
         "details": "Implementar models e services para persistir dados: informações da empresa, dados de contato, classificação da IA, timestamp de criação. Evitar duplicatas através de verificação por domínio. Implementar soft delete para compliance LGPD. Adicionar campos de auditoria e logs de alterações.",
         "testStrategy": "Testar inserção de leads sem duplicatas. Verificar integridade referencial entre tabelas. Validar soft delete e logs de auditoria funcionando.",
         "priority": "medium",
-        "dependencies": [
-          "7"
-        ],
+        "dependencies": ["7"],
         "status": "pending",
         "subtasks": [
           {
@@ -557,9 +485,7 @@
             "id": 2,
             "title": "Criar sistema de detecção de duplicatas por domínio",
             "description": "Implementar verificação automática de duplicatas baseada no domínio da empresa antes da inserção",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Criar função de verificação que extraia o domínio do website da empresa e consulte a base existente. Implementar normalização de domínios (www, subdominios). Criar estratégia de merge de dados quando duplicata for detectada. Adicionar flags para identificar possíveis duplicatas para revisão manual.",
             "status": "pending",
             "testStrategy": "Testar detecção com diferentes formatos de domínio (com/sem www, http/https). Verificar comportamento com domínios similares. Validar merge de dados em duplicatas detectadas.",
@@ -569,9 +495,7 @@
             "id": 3,
             "title": "Implementar soft delete para LGPD compliance",
             "description": "Adicionar sistema de exclusão lógica de dados para atender requisitos de compliance LGPD",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Adicionar campo 'deleted_at' em todas as tabelas principais. Implementar funções de soft delete que marquem registros como excluídos sem remover fisicamente. Criar queries que filtrem automaticamente registros deletados. Implementar job de limpeza física de dados após período de retenção legal.",
             "status": "pending",
             "testStrategy": "Testar exclusão lógica e verificar que dados não aparecem em consultas normais. Validar recuperação de dados excluídos quando necessário. Testar job de limpeza física.",
@@ -581,9 +505,7 @@
             "id": 4,
             "title": "Adicionar logs de auditoria e campos de tracking",
             "description": "Implementar sistema completo de auditoria para rastrear todas as alterações nos dados",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Criar tabela audit_logs para registrar todas as operações (INSERT, UPDATE, DELETE). Adicionar campos created_at, updated_at, created_by, updated_by em todas as tabelas. Implementar triggers automáticos no Supabase para capturar mudanças. Criar interface para consulta de histórico de alterações.",
             "status": "pending",
             "testStrategy": "Testar captura automática de logs em operações CRUD. Verificar integridade dos timestamps e identificação de usuários. Validar consulta de histórico de alterações.",
@@ -601,9 +523,7 @@
         "details": "Criar endpoint para exportar leads filtrados em CSV. Incluir campos: nome empresa, website, localização, segmento, score relevância, email contato, telefone, LinkedIn. Implementar filtros para exportação (data, score mínimo, segmento). Adicionar headers apropriados e encoding UTF-8 para caracteres especiais.",
         "testStrategy": "Testar exportação com diferentes filtros. Verificar abertura correta em Excel/LibreOffice. Validar encoding de caracteres especiais brasileiros.",
         "priority": "medium",
-        "dependencies": [
-          "8"
-        ],
+        "dependencies": ["8"],
         "status": "pending",
         "subtasks": [
           {
@@ -620,9 +540,7 @@
             "id": 2,
             "title": "Implementar geração de CSV com encoding UTF-8",
             "description": "Desenvolver funcionalidade para gerar arquivo CSV com todos os campos necessários e encoding correto",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Implementar função para converter dados de leads em formato CSV. Incluir todos os campos especificados: nome empresa, website, localização, segmento, score relevância, email contato, telefone, LinkedIn. Configurar encoding UTF-8 com BOM para compatibilidade com Excel. Tratar caracteres especiais brasileiros (acentos, ç, etc). Implementar escape de aspas e vírgulas nos dados.",
             "status": "pending",
             "testStrategy": "Testar abertura do CSV em Excel e LibreOffice. Verificar renderização correta de caracteres especiais brasileiros. Validar estrutura do CSV com dados que contenham vírgulas e aspas.",
@@ -632,9 +550,7 @@
             "id": 3,
             "title": "Adicionar validação de filtros de exportação e headers apropriados",
             "description": "Implementar validação robusta dos filtros e configurar headers HTTP corretos para download",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Implementar validação completa dos parâmetros de filtro: formato de datas, valores de score válidos, segmentos existentes. Adicionar sanitização de inputs para prevenir injection. Configurar headers HTTP apropriados: Content-Type, Content-Disposition com nome do arquivo, Cache-Control. Implementar rate limiting para prevenir abuso. Adicionar logs de auditoria para exports realizados conforme LGPD.",
             "status": "pending",
             "testStrategy": "Testar validação com dados inválidos e edge cases. Verificar headers HTTP corretos no download. Validar rate limiting funcionando. Confirmar logs de auditoria sendo gerados.",
@@ -652,9 +568,7 @@
         "details": "Implementar endpoint para configurar webhooks de destino. Criar job queue para envio confiável de leads. Suportar autenticação básica e token-based. Implementar retry logic para falhas de envio. Adicionar logs detalhados de tentativas de envio e responses. Permitir configuração de campos customizados para cada CRM.",
         "testStrategy": "Testar envio para webhooks de teste (webhook.site). Verificar retry logic com endpoints falhando. Validar autenticação e logs de envio.",
         "priority": "medium",
-        "dependencies": [
-          "8"
-        ],
+        "dependencies": ["8"],
         "status": "pending",
         "subtasks": [
           {
@@ -671,9 +585,7 @@
             "id": 2,
             "title": "Implementar job queue para envio confiável",
             "description": "Criar sistema de filas para processar envios de leads de forma assíncrona e confiável",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Implementar job queue usando Redis ou sistema de filas local. Criar workers para processar envios de forma assíncrona. Implementar serialização de dados do lead para envio. Configurar concorrência e rate limiting para evitar sobrecarga do CRM. Adicionar monitoramento de status da fila.",
             "status": "pending",
             "testStrategy": "Testar processamento de fila com múltiplos jobs simultâneos. Verificar rate limiting e comportamento sob carga.",
@@ -683,9 +595,7 @@
             "id": 3,
             "title": "Adicionar suporte a autenticação (basic/token)",
             "description": "Implementar diferentes métodos de autenticação para webhooks (Basic Auth e Token-based)",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Implementar suporte para autenticação HTTP Basic com usuário/senha. Adicionar suporte para autenticação por token (Bearer, API Key, Custom Headers). Permitir configuração de múltiplos tipos de auth por webhook. Implementar storage seguro de credenciais com criptografia. Adicionar validação de credenciais antes do envio.",
             "status": "pending",
             "testStrategy": "Testar autenticação Basic Auth e Token com endpoints que requerem cada tipo. Verificar storage seguro de credenciais.",
@@ -695,9 +605,7 @@
             "id": 4,
             "title": "Implementar retry logic para falhas",
             "description": "Criar sistema de tentativas automáticas para envios falhados com backoff exponencial",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Implementar retry automático com backoff exponencial (1s, 2s, 4s, 8s, 16s). Configurar número máximo de tentativas (padrão: 5). Classificar erros como temporários (timeout, 5xx) ou permanentes (4xx). Implementar dead letter queue para falhas definitivas. Adicionar configuração personalizável de retry policy por webhook.",
             "status": "pending",
             "testStrategy": "Testar retry logic com endpoints que falham temporariamente. Verificar backoff exponencial e classificação de erros.",
@@ -707,10 +615,7 @@
             "id": 5,
             "title": "Criar logs detalhados e campos customizáveis",
             "description": "Implementar sistema de logging completo e permitir configuração de campos personalizados por CRM",
-            "dependencies": [
-              3,
-              4
-            ],
+            "dependencies": [3, 4],
             "details": "Criar logs detalhados de todas as tentativas de envio (timestamp, URL, payload, response, status). Implementar mapeamento de campos do lead para formato específico de cada CRM. Permitir configuração de campos customizados e transformações de dados. Adicionar dashboard de logs com filtros e busca. Implementar retenção configurável de logs.",
             "status": "pending",
             "testStrategy": "Verificar logs detalhados de envios bem-sucedidos e falhados. Testar mapeamento de campos customizados para diferentes CRMs.",
@@ -728,10 +633,7 @@
         "details": "Criar SPA com React/Vue.js para: configurar filtros de busca, visualizar leads encontrados em tabela, iniciar/parar processo de prospecção, configurar webhooks, exportar dados. Implementar autenticação básica. Design responsivo para desktop. Interface simples e intuitiva focada na funcionalidade.",
         "testStrategy": "Testar todas as funcionalidades da interface. Verificar responsividade em diferentes tamanhos de tela. Validar autenticação e proteção de rotas.",
         "priority": "medium",
-        "dependencies": [
-          "9",
-          "10"
-        ],
+        "dependencies": ["9", "10"],
         "status": "pending",
         "subtasks": [
           {
@@ -748,9 +650,7 @@
             "id": 2,
             "title": "Implementar autenticação e proteção de rotas",
             "description": "Desenvolver sistema de login com JWT e proteger rotas sensíveis da aplicação",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Criar componentes de login e logout. Implementar interceptors para requisições HTTP com token JWT. Configurar guards de rota para páginas protegidas. Implementar refresh automático de tokens. Criar contexto/store para estado de autenticação. Adicionar redirecionamento automático para login quando não autenticado.",
             "status": "pending",
             "testStrategy": "Testar fluxo completo de login/logout. Verificar proteção de rotas funcionando. Validar renovação automática de tokens.",
@@ -760,9 +660,7 @@
             "id": 3,
             "title": "Criar interface de configuração de filtros",
             "description": "Desenvolver formulário interativo para configurar filtros de busca de leads",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Criar componente de formulário com campos para: segmento de mercado, localização geográfica, tamanho da empresa, faturamento estimado. Implementar validação de campos em tempo real. Adicionar preview dos filtros aplicados. Implementar salvamento e carregamento de configurações predefinidas. Interface drag-and-drop para ordenar critérios de prioridade.",
             "status": "pending",
             "testStrategy": "Testar validação de todos os campos. Verificar salvamento e carregamento de configurações. Validar preview dos filtros.",
@@ -772,9 +670,7 @@
             "id": 4,
             "title": "Implementar visualização de leads em tabela",
             "description": "Criar interface para exibir leads encontrados em formato de tabela com funcionalidades avançadas",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Desenvolver tabela responsiva com paginação, ordenação e filtros. Implementar busca em tempo real. Adicionar ações por linha (visualizar detalhes, marcar como qualificado). Criar modal para detalhes completos do lead. Implementar seleção múltipla para ações em lote. Adicionar indicadores visuais de relevância e status.",
             "status": "pending",
             "testStrategy": "Testar paginação e ordenação. Verificar funcionalidade de busca. Validar ações em lote e visualização de detalhes.",
@@ -784,9 +680,7 @@
             "id": 5,
             "title": "Criar controles de processo (iniciar/parar)",
             "description": "Implementar interface para controlar o processo de prospecção com status em tempo real",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "Criar dashboard com botões para iniciar/parar processo. Implementar indicadores de status em tempo real (em execução, pausado, concluído). Adicionar barra de progresso e estatísticas (leads encontrados, tempo decorrido). Configurar notificações push para eventos importantes. Implementar logs de atividade visíveis ao usuário.",
             "status": "pending",
             "testStrategy": "Testar controles de iniciar/parar processo. Verificar atualização de status em tempo real. Validar notificações funcionando.",
@@ -796,9 +690,7 @@
             "id": 6,
             "title": "Implementar configuração de webhooks e exportação",
             "description": "Desenvolver interfaces para configurar webhooks e exportar dados em múltiplos formatos",
-            "dependencies": [
-              5
-            ],
+            "dependencies": [5],
             "details": "Criar formulário para configurar URLs de webhook e eventos. Implementar interface de exportação com opções CSV, Excel, JSON. Adicionar agendamento de exports automáticos. Criar histórico de exports realizados. Implementar preview antes da exportação. Adicionar templates personalizáveis para formato de dados exportados.",
             "status": "pending",
             "testStrategy": "Testar configuração de webhooks. Verificar exportação em todos os formatos. Validar agendamento automático e histórico.",
@@ -816,9 +708,7 @@
         "details": "Criar endpoints para métricas: total de leads encontrados/mês, taxa de conversão por segmento, empresas por região, score médio de relevância. Implementar dashboard simples com gráficos básicos (Chart.js). Adicionar filtros por período e segmento. Calcular métricas de ROI baseado em conversões.",
         "testStrategy": "Testar cálculo correto de métricas com dados de teste. Verificar filtros de período funcionando. Validar exibição de gráficos no dashboard.",
         "priority": "low",
-        "dependencies": [
-          "11"
-        ],
+        "dependencies": ["11"],
         "status": "pending",
         "subtasks": [
           {
@@ -835,9 +725,7 @@
             "id": 2,
             "title": "Implementar cálculos de conversão e ROI",
             "description": "Desenvolver lógica para calcular métricas de conversão e retorno sobre investimento",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Implementar cálculo de taxa de conversão baseado em leads qualificados vs convertidos. Calcular ROI considerando custo de aquisição e valor de conversão. Criar funções utilitárias para agregação temporal (mensal, trimestral). Considerar diferentes segmentos e filtros na análise.",
             "status": "pending",
             "testStrategy": "Testar cálculos com dados conhecidos. Verificar precisão das fórmulas de ROI e conversão. Validar agregações temporais.",
@@ -847,9 +735,7 @@
             "id": 3,
             "title": "Integrar Chart.js para visualizações",
             "description": "Implementar dashboard com gráficos usando Chart.js para visualizar as métricas",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Configurar Chart.js no frontend. Criar gráficos de linha para evolução temporal, gráficos de pizza para distribuição por segmento/região, gráficos de barras para comparações. Implementar design responsivo e cores consistentes com a identidade visual. Adicionar tooltips informativos.",
             "status": "pending",
             "testStrategy": "Testar renderização de gráficos em diferentes dispositivos. Verificar tooltips e interatividade. Validar responsividade.",
@@ -859,9 +745,7 @@
             "id": 4,
             "title": "Adicionar filtros por período e segmento",
             "description": "Implementar sistema de filtros para personalizar visualização dos relatórios",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Criar interface de filtros com seletores de data (período inicial/final), dropdown de segmentos, filtro por região. Implementar aplicação dinâmica dos filtros nos gráficos sem reload da página. Adicionar funcionalidade de salvar/carregar filtros favoritos. Incluir validação de inputs e feedback visual.",
             "status": "pending",
             "testStrategy": "Testar aplicação de filtros em tempo real. Verificar validação de datas e seleções. Validar persistência de filtros favoritos.",
@@ -879,9 +763,7 @@
         "details": "Implementar job queue com Redis/Bull para processar buscas em background. Criar workers para: busca de empresas, classificação por IA, enriquecimento de dados. Implementar progress tracking e status de jobs. Adicionar interface para monitorar jobs em execução. Configurar retry automático para jobs falhados.",
         "testStrategy": "Testar execução de jobs em background. Verificar progress tracking funcionando. Validar retry logic para jobs falhados. Testar escalabilidade com múltiplos workers.",
         "priority": "medium",
-        "dependencies": [
-          "6"
-        ],
+        "dependencies": ["6"],
         "status": "pending",
         "subtasks": [
           {
@@ -898,9 +780,7 @@
             "id": 2,
             "title": "Criar workers para busca, classificação e enriquecimento",
             "description": "Implementar workers específicos para processar jobs de busca de empresas, classificação por IA e enriquecimento de dados",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Criar worker para busca de empresas via APIs externas. Implementar worker de classificação usando modelos de IA. Desenvolver worker de enriquecimento de dados com informações adicionais. Configurar concorrência e rate limiting para cada worker. Implementar error handling específico para cada tipo de job.",
             "status": "pending",
             "testStrategy": "Testar execução de cada tipo de worker separadamente. Verificar rate limiting funcionando. Validar error handling e logs de erros específicos.",
@@ -910,9 +790,7 @@
             "id": 3,
             "title": "Implementar progress tracking em tempo real",
             "description": "Desenvolver sistema de acompanhamento de progresso dos jobs com atualizações em tempo real via WebSocket",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Implementar WebSocket para comunicação em tempo real. Criar sistema de tracking de progresso com percentual de conclusão. Implementar eventos de status change (started, progress, completed, failed). Criar store no frontend para gerenciar estado dos jobs. Adicionar notificações visuais de progresso na interface.",
             "status": "pending",
             "testStrategy": "Testar atualizações de progresso em tempo real. Verificar reconexão WebSocket em caso de perda de conexão. Validar sincronização entre múltiplos clientes.",
@@ -922,9 +800,7 @@
             "id": 4,
             "title": "Criar interface de monitoramento de jobs",
             "description": "Desenvolver dashboard para visualizar e gerenciar jobs em execução, concluídos e falhados",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Criar página de dashboard com lista de jobs por status. Implementar filtros por tipo, data e status. Adicionar ações para cancelar, reprocessar e visualizar detalhes dos jobs. Criar gráficos de performance e estatísticas de execução. Implementar paginação e busca na lista de jobs.",
             "status": "pending",
             "testStrategy": "Testar visualização de jobs em diferentes estados. Verificar ações de cancelamento e reprocessamento. Validar filtros e paginação funcionando corretamente.",
@@ -934,9 +810,7 @@
             "id": 5,
             "title": "Implementar retry automático e dead letter queue",
             "description": "Configurar sistema de retry automático para jobs falhados e dead letter queue para jobs que falharam múltiplas vezes",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Configurar retry exponential backoff para jobs falhados. Implementar dead letter queue para jobs que excederam tentativas máximas. Criar alertas para jobs enviados para DLQ. Implementar análise de causas de falha e categorização de erros. Adicionar funcionalidade manual de reprocessamento da DLQ.",
             "status": "pending",
             "testStrategy": "Testar retry automático com diferentes tipos de falha. Verificar jobs sendo movidos para DLQ após esgotarem tentativas. Validar alertas sendo disparados corretamente.",
@@ -946,9 +820,7 @@
             "id": 6,
             "title": "Configurar escalabilidade horizontal de workers",
             "description": "Implementar capacidade de executar múltiplos workers em paralelo e distribuir carga automaticamente",
-            "dependencies": [
-              5
-            ],
+            "dependencies": [5],
             "details": "Configurar Bull para executar múltiplos workers por tipo de job. Implementar balanceamento de carga entre workers. Criar sistema de health check para workers. Configurar auto-scaling baseado na fila de jobs pendentes. Implementar graceful shutdown para workers. Adicionar métricas de performance por worker.",
             "status": "pending",
             "testStrategy": "Testar execução paralela de múltiplos workers. Verificar distribuição de carga equilibrada. Validar auto-scaling funcionando conforme carga. Testar graceful shutdown sem perda de jobs.",
@@ -966,9 +838,7 @@
         "details": "Implementar consentimento explícito antes de armazenar dados. Criar endpoint para exclusão de dados pessoais (direito ao esquecimento). Implementar anonização de dados após período definido. Adicionar logs de auditoria para acesso a dados. Criar termos de uso e política de privacidade. Implementar notificação de vazamentos se necessário.",
         "testStrategy": "Testar fluxo completo de consentimento. Verificar exclusão efetiva de dados pessoais. Validar anonização automática e logs de auditoria.",
         "priority": "high",
-        "dependencies": [
-          "8"
-        ],
+        "dependencies": ["8"],
         "status": "pending",
         "subtasks": [
           {
@@ -985,9 +855,7 @@
             "id": 2,
             "title": "Criar endpoint para direito ao esquecimento",
             "description": "Desenvolver API para exclusão completa de dados pessoais conforme direito ao esquecimento da LGPD",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Criar endpoint DELETE /api/user-data/:id para exclusão de dados. Implementar busca recursiva por todos os dados do usuário em todas as tabelas. Garantir exclusão física completa incluindo backups. Adicionar confirmação dupla e logging da exclusão. Implementar relatório de dados excluídos.",
             "status": "pending",
             "testStrategy": "Testar exclusão completa de dados em todas as tabelas. Verificar que dados não são mais recuperáveis. Validar logs de auditoria da exclusão.",
@@ -997,9 +865,7 @@
             "id": 3,
             "title": "Implementar anonização automática de dados",
             "description": "Criar sistema de anonização automática de dados pessoais após período de retenção definido",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Implementar job agendado para identificar dados elegíveis para anonização. Criar funções de anonização preservando utilidade estatística dos dados. Configurar período de retenção por tipo de dado. Implementar hash irreversível para dados que precisam manter referência. Adicionar relatórios de dados anonizados.",
             "status": "pending",
             "testStrategy": "Testar execução automática da anonização. Verificar que dados anonizados não permitem re-identificação. Validar preservação de utilidade estatística dos dados.",
@@ -1009,9 +875,7 @@
             "id": 4,
             "title": "Adicionar logs de auditoria para acesso a dados",
             "description": "Implementar sistema completo de auditoria para rastreamento de acesso e manipulação de dados pessoais",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Criar middleware para capturar todos os acessos a dados pessoais. Implementar logging estruturado com usuário, timestamp, ação, dados acessados e IP. Criar tabela de auditoria com retenção de 5 anos. Implementar relatórios de auditoria por usuário e período. Adicionar alertas para acessos suspeitos.",
             "status": "pending",
             "testStrategy": "Verificar logging de todos os tipos de acesso a dados. Testar geração de relatórios de auditoria. Validar alertas para padrões de acesso anômalos.",
@@ -1021,9 +885,7 @@
             "id": 5,
             "title": "Criar termos de uso e política de privacidade",
             "description": "Desenvolver documentos legais de termos de uso e política de privacidade conforme LGPD",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Criar página de termos de uso detalhando coleta, uso e armazenamento de dados. Desenvolver política de privacidade explicando direitos do titular. Implementar sistema de versionamento destes documentos. Adicionar mecanismo de notificação de mudanças. Integrar aceite obrigatório no fluxo de cadastro.",
             "status": "pending",
             "testStrategy": "Verificar exibição correta dos documentos legais. Testar fluxo de aceite obrigatório. Validar notificação de mudanças nos termos.",
@@ -1033,9 +895,7 @@
             "id": 6,
             "title": "Implementar notificação de vazamentos",
             "description": "Criar sistema de detecção e notificação de possíveis vazamentos de dados pessoais",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "Implementar monitoramento de acessos anômalos e tentativas de breach. Criar sistema de alertas automáticos para administradores. Desenvolver template de notificação para autoridades (ANPD) e usuários afetados. Implementar procedimento de contenção de incidentes. Adicionar relatório de impacto de vazamentos.",
             "status": "pending",
             "testStrategy": "Testar detecção de padrões de acesso suspeitos. Verificar envio automático de notificações. Validar procedimentos de contenção de incidentes.",
@@ -1053,9 +913,7 @@
         "details": "Implementar autenticação JWT com refresh tokens. Criar sistema de roles (admin, operator, viewer). Proteger todas as rotas sensíveis. Implementar rate limiting por usuário. Adicionar logs de acesso e tentativas de login. Configurar sessões com timeout automático. Integrar com Supabase Auth se possível.",
         "testStrategy": "Testar login/logout e renovação de tokens. Verificar controle de acesso por roles. Validar rate limiting e logs de segurança funcionando.",
         "priority": "medium",
-        "dependencies": [
-          "2"
-        ],
+        "dependencies": ["2"],
         "status": "pending",
         "subtasks": [
           {
@@ -1072,9 +930,7 @@
             "id": 2,
             "title": "Criar sistema de roles (admin/operator/viewer)",
             "description": "Implementar controle de acesso baseado em roles para diferentes níveis de permissão no sistema",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Definir roles: admin (acesso total), operator (CRUD de leads), viewer (apenas leitura). Criar tabela de roles no banco. Implementar middleware de verificação de permissões. Adicionar campo role_id na tabela de usuários. Criar funções helper para verificar permissões específicas.",
             "status": "pending",
             "testStrategy": "Testar acesso de cada role às suas funcionalidades permitidas. Verificar bloqueio de acesso não autorizado. Validar alteração de roles funcionando.",
@@ -1084,9 +940,7 @@
             "id": 3,
             "title": "Proteger rotas e implementar middleware de autorização",
             "description": "Aplicar proteção em todas as rotas sensíveis com middleware de autenticação e autorização",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Criar middleware de autenticação para verificar JWT válido. Implementar middleware de autorização por roles. Proteger rotas de API (/api/leads, /api/companies, /api/admin). Implementar proteção de rotas frontend. Adicionar guards de rota para diferentes níveis de acesso.",
             "status": "pending",
             "testStrategy": "Testar acesso a rotas protegidas com/sem token válido. Verificar redirecionamento adequado para login. Validar proteção por roles funcionando em todas as rotas.",
@@ -1096,9 +950,7 @@
             "id": 4,
             "title": "Adicionar rate limiting por usuário e logs de segurança",
             "description": "Implementar controle de taxa de requisições e sistema de logs para monitoramento de segurança",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Configurar express-rate-limit por usuário/IP. Implementar sistema de logs com winston para: tentativas de login, acessos negados, alterações críticas. Criar tabela de audit_logs no banco. Implementar alertas para tentativas suspeitas. Configurar limpeza automática de logs antigos.",
             "status": "pending",
             "testStrategy": "Testar bloqueio após exceder limite de requisições. Verificar logs sendo gravados corretamente. Validar alertas de segurança funcionando adequadamente.",
@@ -1108,9 +960,7 @@
             "id": 5,
             "title": "Integrar com Supabase Auth se viável",
             "description": "Avaliar e implementar integração com sistema de autenticação do Supabase como alternativa ao JWT customizado",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "Pesquisar Supabase Auth capabilities e compatibilidade com sistema de roles customizado. Implementar autenticação social (Google/GitHub) se necessário. Migrar sistema JWT para Supabase Auth mantendo roles customizados. Configurar RLS policies no Supabase alinhadas com roles. Manter fallback para JWT se integração não for viável.",
             "status": "pending",
             "testStrategy": "Testar autenticação via Supabase Auth. Verificar compatibilidade com sistema de roles existente. Validar migração de dados de usuários sem perda de funcionalidade.",
@@ -1128,9 +978,7 @@
         "details": "Configurar Winston/Pino para logging estruturado. Implementar métricas de performance (response time, throughput). Adicionar health checks para APIs externas. Configurar alertas para erros críticos. Implementar dashboard de monitoramento básico. Logs devem incluir request ID para tracking.",
         "testStrategy": "Verificar logs sendo gerados corretamente. Testar health checks com APIs indisponíveis. Validar métricas de performance sendo coletadas.",
         "priority": "low",
-        "dependencies": [
-          "11"
-        ],
+        "dependencies": ["11"],
         "status": "pending",
         "subtasks": [
           {
@@ -1147,9 +995,7 @@
             "id": 2,
             "title": "Implementar métricas de performance e health checks",
             "description": "Criar sistema de coleta de métricas de performance e health checks para APIs externas",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Implementar coleta de métricas: response time, throughput, memory usage, CPU. Usar bibliotecas como prom-client para Prometheus metrics. Criar health checks para APIs externas (LinkedIn, outras integrações). Implementar endpoint /health para status geral da aplicação. Configurar métricas customizadas para business logic. Adicionar monitoramento de database connections e Redis.",
             "status": "pending",
             "testStrategy": "Testar health checks com APIs indisponíveis. Verificar métricas sendo coletadas corretamente. Validar endpoint /health retornando status apropriados.",
@@ -1159,10 +1005,7 @@
             "id": 3,
             "title": "Configurar alertas para erros críticos",
             "description": "Implementar sistema de alertas para monitoramento proativo de erros críticos e falhas do sistema",
-            "dependencies": [
-              1,
-              2
-            ],
+            "dependencies": [1, 2],
             "details": "Configurar alertas para erros críticos usando webhooks ou email. Definir thresholds para diferentes tipos de alerta (error rate, response time, memory usage). Implementar integração com serviços como Slack ou Discord para notificações. Criar diferentes níveis de severidade (critical, warning, info). Configurar rate limiting para evitar spam de alertas. Implementar escalation rules para alertas não resolvidos.",
             "status": "pending",
             "testStrategy": "Testar disparo de alertas simulando erros. Verificar rate limiting funcionando. Validar diferentes canais de notificação.",
@@ -1172,11 +1015,7 @@
             "id": 4,
             "title": "Criar dashboard básico de monitoramento",
             "description": "Desenvolver interface web simples para visualização de métricas, logs e status do sistema em tempo real",
-            "dependencies": [
-              1,
-              2,
-              3
-            ],
+            "dependencies": [1, 2, 3],
             "details": "Criar dashboard web básico para visualização de métricas. Mostrar gráficos de response time, throughput, error rate. Implementar visualização de logs em tempo real com filtros. Adicionar status de health checks e últimos alertas. Usar bibliotecas como Chart.js ou D3.js para gráficos. Implementar auto-refresh de dados. Adicionar filtros por data/hora e nível de log.",
             "status": "pending",
             "testStrategy": "Testar dashboard carregando dados corretamente. Verificar auto-refresh funcionando. Validar filtros e visualizações responsivas.",
@@ -1194,10 +1033,7 @@
         "details": "Implementar cache inteligente para resultados de busca (Redis). Otimizar queries para APIs de busca e IA. Implementar rate limiting adaptativo baseado em quotas. Criar sistema de fallback entre diferentes APIs. Implementar compressão de dados e batch processing. Monitorar custos por API e implementar alertas.",
         "testStrategy": "Testar cache hit/miss scenarios. Verificar rate limiting adaptativo funcionando. Validar fallback entre APIs diferentes. Monitorar redução efetiva de custos.",
         "priority": "medium",
-        "dependencies": [
-          "13",
-          "16"
-        ],
+        "dependencies": ["13", "16"],
         "status": "pending",
         "subtasks": [
           {
@@ -1214,9 +1050,7 @@
             "id": 2,
             "title": "Otimizar queries e implementar rate limiting adaptativo",
             "description": "Otimizar consultas para APIs de busca e IA, implementando rate limiting que se adapta automaticamente baseado em quotas disponíveis",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Analisar e otimizar queries SQL mais lentas. Implementar rate limiting com Redis usando sliding window. Criar algoritmo adaptativo que ajusta limites baseado em quotas restantes das APIs. Implementar backpressure quando limites são atingidos. Adicionar métricas de performance e throttling.",
             "status": "pending",
             "testStrategy": "Testar rate limiting com diferentes volumes de requisições. Verificar adaptação automática baseada em quotas. Validar backpressure funcionando sem perda de dados. Medir redução no tempo de resposta das queries otimizadas.",
@@ -1226,9 +1060,7 @@
             "id": 3,
             "title": "Criar sistema de fallback entre diferentes APIs",
             "description": "Implementar sistema robusto de fallback que alterna automaticamente entre diferentes provedores de API quando um falha ou atinge limites",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Criar circuit breaker pattern para APIs externas. Implementar priority queue para diferentes provedores (OpenAI, Anthropic, etc). Adicionar health checks automáticos. Criar estratégia de fallback inteligente baseada em custo/performance. Implementar retry logic com exponential backoff. Adicionar logging detalhado para troubleshooting.",
             "status": "pending",
             "testStrategy": "Simular falhas de APIs e verificar fallback automático. Testar circuit breaker abrindo/fechando corretamente. Validar health checks detectando problemas. Verificar logging adequado para debug.",
@@ -1238,9 +1070,7 @@
             "id": 4,
             "title": "Implementar compressão de dados e batch processing",
             "description": "Otimizar transferência de dados implementando compressão e processamento em lotes para reduzir custos de APIs",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Implementar compressão gzip/brotli para requests/responses de APIs. Criar batch processing para múltiplas consultas em uma única request. Implementar queue para agrupar requests similares. Adicionar data deduplication antes do envio. Configurar compression levels otimizados por tipo de dado. Implementar streaming para large datasets.",
             "status": "pending",
             "testStrategy": "Testar compressão reduzindo tamanho de payloads. Verificar batch processing agrupando requests corretamente. Validar deduplication removendo dados duplicados. Medir redução efetiva nos custos de transferência.",
@@ -1250,9 +1080,7 @@
             "id": 5,
             "title": "Adicionar monitoramento de custos e sistema de alertas",
             "description": "Implementar dashboard completo para monitorar custos por API em tempo real e sistema de alertas automáticos",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "Criar dashboard com métricas de custo por API, requests/min, success rate. Implementar tracking de custos em tempo real usando webhooks das APIs. Criar sistema de alertas via email/Slack quando limites são atingidos. Adicionar projeções de custo mensal. Implementar relatórios automáticos semanais. Criar métricas de ROI por feature.",
             "status": "pending",
             "testStrategy": "Testar dashboard mostrando métricas em tempo real. Verificar alertas sendo disparados nos thresholds corretos. Validar projeções de custo com dados históricos. Testar relatórios automáticos sendo enviados.",
@@ -1270,10 +1098,7 @@
         "details": "Implementar testes unitários para services e utils usando Jest. Criar testes de integração para APIs e banco de dados. Implementar testes end-to-end para fluxos principais. Configurar mocks para APIs externas. Adicionar coverage reporting e CI/CD com GitHub Actions. Target: 80%+ code coverage.",
         "testStrategy": "Executar todos os testes automatizados. Verificar coverage reports. Validar testes passando em ambiente CI. Testar mocks funcionando corretamente.",
         "priority": "medium",
-        "dependencies": [
-          "14",
-          "15"
-        ],
+        "dependencies": ["14", "15"],
         "status": "pending",
         "subtasks": [
           {
@@ -1290,9 +1115,7 @@
             "id": 2,
             "title": "Implementar testes unitários para services e utils",
             "description": "Criar testes unitários completos para todas as funções de services e utilitários",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Escrever testes unitários para services de busca, classificação e validação. Criar testes para funções utilitárias de formatação, validação e transformação de dados. Implementar mocks para dependências externas. Garantir cobertura de casos edge e tratamento de erros.",
             "status": "pending",
             "testStrategy": "Executar testes unitários com coverage. Verificar se todos os services e utils têm cobertura mínima de 80%. Validar mocks funcionando corretamente.",
@@ -1302,9 +1125,7 @@
             "id": 3,
             "title": "Criar testes de integração para APIs e banco",
             "description": "Implementar testes de integração para endpoints da API e operações de banco de dados",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Criar testes de integração para todos os endpoints REST. Configurar banco de dados de teste. Implementar testes para operações CRUD no Supabase. Testar autenticação e autorização. Configurar fixtures e dados de teste. Implementar cleanup entre testes.",
             "status": "pending",
             "testStrategy": "Executar testes de integração contra banco de teste. Verificar todos os endpoints funcionando. Validar autenticação e autorização.",
@@ -1314,9 +1135,7 @@
             "id": 4,
             "title": "Implementar testes E2E para fluxos principais",
             "description": "Criar testes end-to-end para os fluxos críticos da aplicação usando Playwright ou Cypress",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Configurar Playwright ou Cypress para testes E2E. Implementar testes para fluxo de busca de leads. Criar testes para classificação e filtragem. Testar fluxo de exportação CSV. Implementar testes para fluxos de autenticação. Configurar execução em headless mode.",
             "status": "pending",
             "testStrategy": "Executar testes E2E em diferentes browsers. Verificar fluxos críticos funcionando. Validar interface e funcionalidades integradas.",
@@ -1326,9 +1145,7 @@
             "id": 5,
             "title": "Configurar CI/CD com coverage reporting",
             "description": "Implementar pipeline de CI/CD no GitHub Actions com relatórios de cobertura automatizados",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "Criar workflow do GitHub Actions para execução automática de testes. Configurar jobs para testes unitários, integração e E2E. Implementar coverage reporting com codecov ou similar. Configurar gates de qualidade (80%+ coverage). Adicionar badges de status no README. Configurar execução em PRs e merge para main.",
             "status": "pending",
             "testStrategy": "Verificar pipeline executando sem erros. Validar reports de coverage sendo gerados. Testar gates de qualidade bloqueando PRs com baixa cobertura.",
@@ -1346,10 +1163,7 @@
         "details": "Configurar deploy automatizado (Vercel/Railway/DigitalOcean). Implementar variáveis de ambiente para produção. Configurar SSL/TLS e domínio personalizado. Implementar backup automatizado do banco de dados. Configurar CDN para assets estáticos. Implementar rolling deployments sem downtime.",
         "testStrategy": "Testar deploy em ambiente de staging. Verificar SSL funcionando corretamente. Validar backups sendo criados automaticamente. Testar rollback em caso de falhas.",
         "priority": "medium",
-        "dependencies": [
-          "17",
-          "18"
-        ],
+        "dependencies": ["17", "18"],
         "status": "pending",
         "subtasks": [
           {
@@ -1366,9 +1180,7 @@
             "id": 2,
             "title": "Implementar variáveis de ambiente e configurar SSL/TLS",
             "description": "Configurar todas as variáveis de ambiente necessárias para produção e implementar certificado SSL/TLS com domínio personalizado",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Criar arquivo de configuração para variáveis de produção (DATABASE_URL, API_KEYS, JWT_SECRET). Configurar domínio personalizado na plataforma de deploy. Implementar certificado SSL automático ou configurar certificado personalizado. Configurar redirects HTTPS obrigatórios. Validar todas as conexões seguras.",
             "status": "pending",
             "testStrategy": "Verificar se site está acessível via HTTPS com certificado válido. Testar se todas as variáveis de ambiente estão funcionando corretamente",
@@ -1388,9 +1200,7 @@
             "id": 4,
             "title": "Implementar CDN para assets estáticos e rolling deployments",
             "description": "Configurar CDN para otimização de assets e implementar deployments sem downtime",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Configurar CDN (Cloudflare/AWS CloudFront) para servir assets estáticos. Otimizar imagens e recursos para melhor performance. Implementar estratégia de rolling deployment ou blue-green deployment. Configurar health checks para verificar status da aplicação. Implementar rollback automático em caso de falha no deploy.",
             "status": "pending",
             "testStrategy": "Verificar se assets estão sendo servidos via CDN. Testar deploy sem downtime e processo de rollback automático",
@@ -1400,10 +1210,7 @@
             "id": 5,
             "title": "Configurar monitoramento de produção e alertas",
             "description": "Implementar sistema completo de monitoramento, logs e alertas para ambiente de produção",
-            "dependencies": [
-              1,
-              2
-            ],
+            "dependencies": [1, 2],
             "details": "Configurar monitoramento de uptime e performance da aplicação. Implementar logging estruturado com diferentes níveis (error, warn, info). Configurar alertas por email/Slack para erros críticos e downtime. Implementar dashboard de métricas básicas (response time, error rate, usage). Configurar monitoramento de banco de dados e recursos do servidor.",
             "status": "pending",
             "testStrategy": "Simular erro na aplicação e verificar se alertas são enviados. Validar se logs estão sendo coletados corretamente e dashboard está funcionando",
@@ -1421,9 +1228,7 @@
         "details": "Executar busca com critérios reais e validar qualidade dos leads. Testar com diferentes segmentos industriais brasileiros. Validar precisão da classificação por IA. Ajustar filtros baseado nos resultados. Testar carga com 10.000 leads/mês. Validar métricas de sucesso definidas no PRD (50+ leads/mês, 90% precisão contatos).",
         "testStrategy": "Executar teste completo end-to-end com dados reais. Medir tempo de processamento e qualidade dos leads. Validar todas as métricas de sucesso do PRD sendo atingidas.",
         "priority": "high",
-        "dependencies": [
-          "19"
-        ],
+        "dependencies": ["19"],
         "status": "pending",
         "subtasks": [
           {
@@ -1440,9 +1245,7 @@
             "id": 2,
             "title": "Validar qualidade e precisão dos leads encontrados",
             "description": "Analisar a qualidade dos dados coletados e verificar a precisão das informações dos leads gerados pelo sistema",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Verificar veracidade dos dados de contato (emails, telefones, endereços). Validar classificação por IA dos segmentos industriais. Confirmar se empresas encontradas correspondem aos critérios de busca. Medir taxa de precisão de contatos válidos. Verificar se fabricantes de portas/portões foram corretamente excluídos.",
             "status": "pending",
             "testStrategy": "Validar manualmente amostra de 100 leads. Verificar taxa de emails válidos, telefones ativos e classificação correta por IA. Meta: 90% de precisão nos contatos.",
@@ -1452,9 +1255,7 @@
             "id": 3,
             "title": "Executar teste de performance com carga de 10.000 leads por mês",
             "description": "Realizar testes de carga para validar se o sistema suporta o processamento de 10.000 leads mensais conforme especificado no PRD",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Configurar ambiente de teste para simular carga de 10.000 leads/mês. Monitorar tempos de resposta das APIs, uso de memória e CPU. Testar processamento em lote e jobs assíncronos. Verificar estabilidade do banco de dados sob carga. Medir throughput de processamento de leads e identificar gargalos.",
             "status": "pending",
             "testStrategy": "Executar teste de carga simulando 333 leads/dia por 30 dias. Monitorar métricas de performance e identificar limites do sistema.",
@@ -1464,9 +1265,7 @@
             "id": 4,
             "title": "Ajustar filtros e algoritmos baseado nos resultados dos testes",
             "description": "Implementar melhorias nos filtros de busca e algoritmos de classificação com base nos resultados obtidos nos testes anteriores",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Analisar resultados dos testes para identificar pontos de melhoria. Ajustar critérios de filtros que geraram resultados irrelevantes. Refinar algoritmo de classificação por IA baseado nos falsos positivos/negativos encontrados. Otimizar exclusão de segmentos não desejados. Calibrar scores de relevância dos leads.",
             "status": "pending",
             "testStrategy": "Re-executar testes com filtros ajustados e comparar resultados. Verificar melhoria na precisão e relevância dos leads encontrados.",
@@ -1476,9 +1275,7 @@
             "id": 5,
             "title": "Validar métricas de sucesso definidas no PRD",
             "description": "Confirmar se o sistema atende todas as métricas de sucesso estabelecidas no documento de requisitos do produto",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "Verificar se sistema gera 50+ leads qualificados por mês conforme PRD. Validar taxa de precisão de 90% nos dados de contato. Medir tempo médio de processamento e qualidade dos leads. Confirmar funcionamento correto dos webhooks para CRM. Validar todas as funcionalidades principais funcionando conforme especificado.",
             "status": "pending",
             "testStrategy": "Executar checklist completo das métricas do PRD. Documentar resultados quantitativos para cada métrica estabelecida.",
@@ -1488,9 +1285,7 @@
             "id": 6,
             "title": "Otimizar sistema baseado nos resultados finais",
             "description": "Implementar otimizações finais no sistema baseadas em todos os testes realizados e preparar para produção",
-            "dependencies": [
-              5
-            ],
+            "dependencies": [5],
             "details": "Implementar otimizações de performance identificadas nos testes de carga. Ajustar configurações de produção baseadas nos resultados. Finalizar documentação técnica e manual do usuário. Preparar scripts de deployment e configuração de ambiente de produção. Implementar monitoramento e alertas para produção.",
             "status": "pending",
             "testStrategy": "Executar teste final end-to-end em ambiente similar à produção. Verificar se todas as otimizações foram aplicadas corretamente.",
@@ -1507,12 +1302,10 @@
       "lastModified": "2025-11-05T02:22:57.758Z",
       "taskCount": 20,
       "completedCount": 1,
-      "tags": [
-        "master"
-      ],
+      "tags": ["master"],
       "created": "2025-11-05T02:25:02.538Z",
       "description": "Tasks for master context",
-      "updated": "2025-11-05T02:25:02.538Z"
+      "updated": "2025-11-05T03:06:19.928Z"
     }
   }
 }

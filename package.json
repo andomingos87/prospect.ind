@@ -33,6 +33,7 @@
     "health": "curl http://localhost:3000/health"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.79.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
