@@ -112,8 +112,17 @@ npm start
 # Build (quando disponível)
 npm run build
 
-# Testes (quando disponível)
-npm test
+# Testes
+npm test              # Executar todos os testes com coverage
+npm run test:watch    # Executar testes em modo watch
+npm run test:coverage # Gerar relatório de coverage
+
+# Qualidade de Código
+npm run lint          # Verificar problemas de linting
+npm run lint:fix      # Corrigir automaticamente problemas de linting
+npm run format        # Formatar código com Prettier
+npm run format:check  # Verificar formatação sem alterar arquivos
+npm run qa:pre-commit # Executar todas as verificações de QA (lint + format + test + audit)
 
 # Health check
 npm run health
@@ -148,6 +157,79 @@ O projeto implementa as seguintes medidas de segurança:
 - ✅ **CORS**: Controle de Cross-Origin Resource Sharing
 - ✅ **Dotenv**: Variáveis de ambiente protegidas
 - ✅ **LGPD**: Conformidade com a Lei Geral de Proteção de Dados
+- ✅ **Git Hooks**: Verificação automática de secrets antes de commits
+- ✅ **npm audit**: Verificação de vulnerabilidades em dependências
+
+## 🛡️ Gate de QA Automatizado
+
+O projeto possui um sistema completo de QA automatizado que garante a qualidade do código em todo commit:
+
+### Verificações Automáticas
+
+Todas as verificações são executadas automaticamente antes de cada commit:
+
+1. **Linting**: Verificação de padrões de código com ESLint
+2. **Formatação**: Formatação automática com Prettier
+3. **Testes**: Execução de todos os testes com coverage mínimo de 70%
+4. **Secrets**: Bloqueio de commit de arquivos sensíveis (.env, .key, .pem)
+5. **Validação de Commits**: Mensagens devem seguir [Conventional Commits](https://www.conventionalcommits.org/)
+
+### Formato de Commits
+
+As mensagens de commit devem seguir o padrão Conventional Commits:
+
+```
+<tipo>(<escopo>): <descrição>
+
+[corpo opcional]
+
+[rodapé opcional]
+```
+
+**Tipos permitidos:**
+
+- `feat`: Nova funcionalidade
+- `fix`: Correção de bug
+- `docs`: Documentação
+- `style`: Formatação (não afeta código)
+- `refactor`: Refatoração
+- `test`: Testes
+- `chore`: Manutenção
+- `perf`: Performance
+- `ci`: CI/CD
+- `build`: Build
+
+**Exemplos válidos:**
+
+```
+feat: adiciona endpoint de busca de leads industriais
+fix: corrige validação de dados de contato
+docs: atualiza README com instruções de instalação
+test: adiciona testes para serviço de prospecção
+chore: atualiza dependências do projeto
+```
+
+### Configuração
+
+O sistema utiliza:
+
+- **Husky**: Git hooks automatizados
+- **lint-staged**: Executa verificações apenas em arquivos alterados
+- **ESLint**: Linter JavaScript com regras customizadas
+- **Prettier**: Formatador de código
+- **Jest**: Framework de testes com coverage
+- **Commitlint**: Validador de mensagens de commit
+
+### Coverage Mínimo
+
+O projeto está configurado para exigir um coverage mínimo que deve ser aumentado gradualmente conforme mais código e testes são adicionados:
+
+- **Inicial**: 0% (permitido durante desenvolvimento inicial)
+- **Meta**: 70% em branches, functions, lines e statements
+
+O threshold pode ser ajustado no arquivo `jest.config.js`. Conforme mais testes são adicionados, o threshold deve ser aumentado gradualmente até atingir 70%.
+
+Se o coverage ficar abaixo do mínimo configurado, o commit será bloqueado.
 
 ## 📊 Regras de Negócio
 
@@ -163,6 +245,7 @@ O projeto implementa as seguintes medidas de segurança:
 ### Segmentos Excluídos
 
 Por cláusula de não-concorrência:
+
 - Portas automáticas
 - Portões automáticos
 
@@ -214,4 +297,4 @@ Este projeto está sob a licença ISC.
 
 ---
 
-**Mensagem-chave**: *"Automatize a geração de leads industriais de alto ticket e foque em fechar negócios, não em caçar dados."*
+**Mensagem-chave**: _"Automatize a geração de leads industriais de alto ticket e foque em fechar negócios, não em caçar dados."_

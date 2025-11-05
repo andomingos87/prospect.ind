@@ -22,7 +22,7 @@ app.get('/health', (req, res) => {
     status: 'OK',
     message: 'Sistema IA de Prospecção de Indústrias is running',
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development'
+    environment: process.env.NODE_ENV || 'development',
   });
 });
 
@@ -34,8 +34,8 @@ app.get('/', (req, res) => {
     description: 'API para prospecção automatizada de indústrias',
     endpoints: {
       health: '/health',
-      api: '/api/v1'
-    }
+      api: '/api/v1',
+    },
   });
 });
 
@@ -44,23 +44,26 @@ app.use((req, res) => {
   res.status(404).json({
     error: 'Not Found',
     message: 'The requested endpoint does not exist',
-    path: req.path
+    path: req.path,
   });
 });
 
 // Error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res, _next) => {
   console.error('Error:', err);
   res.status(err.status || 500).json({
     error: err.name || 'Internal Server Error',
     message: err.message || 'An unexpected error occurred',
-    ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
+    ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`
+// Start server only if this file is run directly (not imported)
+const isMainModule =
+  import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('index.js');
+if (isMainModule) {
+  app.listen(PORT, () => {
+    console.log(`
 ╔════════════════════════════════════════════════════════════╗
 ║  Sistema IA de Prospecção de Indústrias                   ║
 ╚════════════════════════════════════════════════════════════╝
@@ -70,17 +73,20 @@ app.listen(PORT, () => {
 📊 Health check: http://localhost:${PORT}/health
 
 Ready to prospect industrial leads with AI! 🏭
-  `);
-});
+    `);
+  });
+}
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
   console.log('SIGTERM received, shutting down gracefully...');
+  // eslint-disable-next-line no-process-exit
   process.exit(0);
 });
 
 process.on('SIGINT', () => {
   console.log('SIGINT received, shutting down gracefully...');
+  // eslint-disable-next-line no-process-exit
   process.exit(0);
 });
 

@@ -1,0 +1,9 @@
+node_modules/
+coverage/
+dist/
+build/
+*.log
+.lintstagedrc.js
+jest.config.js
+commitlint.config.js
+
