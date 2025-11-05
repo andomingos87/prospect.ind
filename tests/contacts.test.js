@@ -3,7 +3,7 @@ import Company from '../src/models/Company.js';
 
 describe('Contacts Model', () => {
   let testCompanyId;
-  let testContactId;
+  let testContactIds = []; // Track all created contact IDs
 
   const testCompanyData = {
     name: 'Test Company for Contacts',
@@ -27,11 +27,15 @@ describe('Contacts Model', () => {
   });
 
   afterEach(async () => {
-    // Clean up test contacts
-    if (testContactId) {
-      await Contact.delete(testContactId);
-      testContactId = null;
+    // Clean up all test contacts
+    for (const id of testContactIds) {
+      try {
+        await Contact.delete(id);
+      } catch (error) {
+        // Ignore errors for already deleted items
+      }
     }
+    testContactIds = [];
   });
 
   afterAll(async () => {
@@ -59,7 +63,7 @@ describe('Contacts Model', () => {
       expect(data.type).toBe(testContactData.type);
       expect(data.created_at).toBeDefined();
 
-      testContactId = data.id;
+      testContactIds.push(data.id);
     }, 10000);
 
     it('should require company_id', async () => {
@@ -99,10 +103,11 @@ describe('Contacts Model', () => {
         expect(data).toBeDefined();
         expect(data.type).toBe(type);
 
-        if (testContactId) {
-          await Contact.delete(testContactId);
+        if (testContactIds.length > 0) {
+          await Contact.delete(testContactIds[testContactIds.length - 1]);
+          testContactIds.pop();
         }
-        testContactId = data.id;
+        testContactIds.push(data.id);
       }
     }, 30000);
 
@@ -124,13 +129,13 @@ describe('Contacts Model', () => {
         ...testContactData,
         company_id: testCompanyId,
       });
-      testContactId = created.id;
+      testContactIds.push(created.id);
 
-      const { data, error } = await Contact.findById(testContactId);
+      const { data, error } = await Contact.findById(created.id);
 
       expect(error).toBeNull();
       expect(data).toBeDefined();
-      expect(data.id).toBe(testContactId);
+      expect(data.id).toBe(created.id);
       expect(data.company_id).toBe(testCompanyId);
     }, 10000);
 
@@ -190,9 +195,7 @@ describe('Contacts Model', () => {
           ...contact,
           company_id: testCompanyId,
         });
-        if (!testContactId) {
-          testContactId = data.id; // Track first for cleanup
-        }
+        testContactIds.push(data.id); // Track all IDs for cleanup
       }
     }, 20000);
 
@@ -245,7 +248,7 @@ describe('Contacts Model', () => {
         ...testContactData,
         company_id: testCompanyId,
       });
-      testContactId = created.id;
+      testContactIds.push(created.id);
 
       const updates = {
         email: 'updated@testcompany.com',
@@ -253,7 +256,7 @@ describe('Contacts Model', () => {
         type: 'influencer',
       };
 
-      const { data, error } = await Contact.update(testContactId, updates);
+      const { data, error } = await Contact.update(created.id, updates);
 
       expect(error).toBeNull();
       expect(data).toBeDefined();
@@ -267,9 +270,9 @@ describe('Contacts Model', () => {
         ...testContactData,
         company_id: testCompanyId,
       });
-      testContactId = created.id;
+      testContactIds.push(created.id);
 
-      const { data, error } = await Contact.update(testContactId, {
+      const { data, error } = await Contact.update(created.id, {
         type: 'invalid_type',
       });
 
@@ -285,19 +288,19 @@ describe('Contacts Model', () => {
         ...testContactData,
         company_id: testCompanyId,
       });
-      testContactId = created.id;
+      testContactIds.push(created.id);
 
-      const { data, error } = await Contact.delete(testContactId);
+      const { data, error } = await Contact.delete(created.id);
 
       expect(error).toBeNull();
       expect(data).toBeDefined();
-      expect(data.id).toBe(testContactId);
+      expect(data.id).toBe(created.id);
 
       // Verify deletion
-      const { data: found } = await Contact.findById(testContactId);
+      const { data: found } = await Contact.findById(created.id);
       expect(found).toBeNull();
 
-      testContactId = null; // Prevent double deletion
+      testContactIds = testContactIds.filter(id => id !== created.id); // Remove from tracking
     }, 10000);
   });
 

@@ -1,7 +1,7 @@
 import Company from '../src/models/Company.js';
 
 describe('Companies Model', () => {
-  let testCompanyId;
+  let testCompanyIds = []; // Track all created IDs
 
   const testCompanyData = {
     name: 'Test Industrial Company',
@@ -13,11 +13,15 @@ describe('Companies Model', () => {
   };
 
   afterEach(async () => {
-    // Clean up test data
-    if (testCompanyId) {
-      await Company.delete(testCompanyId);
-      testCompanyId = null;
+    // Clean up all test data
+    for (const id of testCompanyIds) {
+      try {
+        await Company.delete(id);
+      } catch (error) {
+        // Ignore errors for already deleted items
+      }
     }
+    testCompanyIds = [];
   });
 
   describe('create', () => {
@@ -35,7 +39,7 @@ describe('Companies Model', () => {
       expect(Number(data.revenue_estimate)).toBe(testCompanyData.revenue_estimate);
       expect(data.created_at).toBeDefined();
 
-      testCompanyId = data.id;
+      testCompanyIds.push(data.id);
     }, 10000);
 
     it('should require company name', async () => {
@@ -74,10 +78,11 @@ describe('Companies Model', () => {
         expect(data).toBeDefined();
         expect(data.size).toBe(size);
 
-        if (testCompanyId) {
-          await Company.delete(testCompanyId);
+        if (testCompanyIds.length > 0) {
+          await Company.delete(testCompanyIds[testCompanyIds.length - 1]);
+          testCompanyIds.pop();
         }
-        testCompanyId = data.id;
+        testCompanyIds.push(data.id);
       }
     }, 30000);
   });
@@ -85,13 +90,13 @@ describe('Companies Model', () => {
   describe('findById', () => {
     it('should find a company by ID', async () => {
       const { data: created } = await Company.create(testCompanyData);
-      testCompanyId = created.id;
+      testCompanyIds.push(created.id);
 
-      const { data, error } = await Company.findById(testCompanyId);
+      const { data, error } = await Company.findById(created.id);
 
       expect(error).toBeNull();
       expect(data).toBeDefined();
-      expect(data.id).toBe(testCompanyId);
+      expect(data.id).toBe(created.id);
       expect(data.name).toBe(testCompanyData.name);
     }, 10000);
 
@@ -114,9 +119,7 @@ describe('Companies Model', () => {
 
       for (const company of companies) {
         const { data } = await Company.create(company);
-        if (!testCompanyId) {
-          testCompanyId = data.id; // Track first for cleanup
-        }
+        testCompanyIds.push(data.id); // Track all IDs for cleanup
       }
     }, 30000);
 
@@ -180,14 +183,14 @@ describe('Companies Model', () => {
   describe('update', () => {
     it('should update a company', async () => {
       const { data: created } = await Company.create(testCompanyData);
-      testCompanyId = created.id;
+      testCompanyIds.push(created.id);
 
       const updates = {
         name: 'Updated Company Name',
         location: 'Rio de Janeiro, RJ',
       };
 
-      const { data, error } = await Company.update(testCompanyId, updates);
+      const { data, error } = await Company.update(created.id, updates);
 
       expect(error).toBeNull();
       expect(data).toBeDefined();
@@ -197,9 +200,9 @@ describe('Companies Model', () => {
 
     it('should validate size enum on update', async () => {
       const { data: created } = await Company.create(testCompanyData);
-      testCompanyId = created.id;
+      testCompanyIds.push(created.id);
 
-      const { data, error } = await Company.update(testCompanyId, {
+      const { data, error } = await Company.update(created.id, {
         size: 'invalid_size',
       });
 
@@ -212,19 +215,19 @@ describe('Companies Model', () => {
   describe('delete', () => {
     it('should delete a company', async () => {
       const { data: created } = await Company.create(testCompanyData);
-      testCompanyId = created.id;
+      testCompanyIds.push(created.id);
 
-      const { data, error } = await Company.delete(testCompanyId);
+      const { data, error } = await Company.delete(created.id);
 
       expect(error).toBeNull();
       expect(data).toBeDefined();
-      expect(data.id).toBe(testCompanyId);
+      expect(data.id).toBe(created.id);
 
       // Verify deletion
-      const { data: found } = await Company.findById(testCompanyId);
+      const { data: found } = await Company.findById(created.id);
       expect(found).toBeNull();
 
-      testCompanyId = null; // Prevent double deletion
+      testCompanyIds = testCompanyIds.filter(id => id !== created.id); // Remove from tracking
     }, 10000);
   });
 

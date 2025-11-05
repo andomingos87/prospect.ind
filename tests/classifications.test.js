@@ -3,7 +3,7 @@ import Company from '../src/models/Company.js';
 
 describe('Classifications Model', () => {
   let testCompanyId;
-  let testClassificationId;
+  let testClassificationIds = []; // Track all created classification IDs
 
   const testCompanyData = {
     name: 'Test Company for Classifications',
@@ -26,11 +26,15 @@ describe('Classifications Model', () => {
   });
 
   afterEach(async () => {
-    // Clean up test classifications
-    if (testClassificationId) {
-      await Classification.delete(testClassificationId);
-      testClassificationId = null;
+    // Clean up all test classifications
+    for (const id of testClassificationIds) {
+      try {
+        await Classification.delete(id);
+      } catch (error) {
+        // Ignore errors for already deleted items
+      }
     }
+    testClassificationIds = [];
   });
 
   afterAll(async () => {
@@ -57,7 +61,7 @@ describe('Classifications Model', () => {
       expect(data.ai_model_used).toBe(testClassificationData.ai_model_used);
       expect(data.created_at).toBeDefined();
 
-      testClassificationId = data.id;
+      testClassificationIds.push(data.id);
     }, 10000);
 
     it('should require company_id', async () => {
@@ -112,10 +116,11 @@ describe('Classifications Model', () => {
         expect(data).toBeDefined();
         expect(Number(data.relevance_score)).toBe(score);
 
-        if (testClassificationId) {
-          await Classification.delete(testClassificationId);
+        if (testClassificationIds.length > 0) {
+          await Classification.delete(testClassificationIds[testClassificationIds.length - 1]);
+          testClassificationIds.pop();
         }
-        testClassificationId = data.id;
+        testClassificationIds.push(data.id);
       }
     }, 20000);
 
@@ -137,13 +142,13 @@ describe('Classifications Model', () => {
         ...testClassificationData,
         company_id: testCompanyId,
       });
-      testClassificationId = created.id;
+      testClassificationIds.push(created.id);
 
-      const { data, error } = await Classification.findById(testClassificationId);
+      const { data, error } = await Classification.findById(created.id);
 
       expect(error).toBeNull();
       expect(data).toBeDefined();
-      expect(data.id).toBe(testClassificationId);
+      expect(data.id).toBe(created.id);
       expect(data.company_id).toBe(testCompanyId);
     }, 10000);
 
@@ -246,9 +251,7 @@ describe('Classifications Model', () => {
           ...classification,
           company_id: testCompanyId,
         });
-        if (!testClassificationId) {
-          testClassificationId = data.id; // Track first for cleanup
-        }
+        testClassificationIds.push(data.id); // Track all IDs for cleanup
       }
     }, 20000);
 
@@ -322,7 +325,7 @@ describe('Classifications Model', () => {
         ...testClassificationData,
         company_id: testCompanyId,
       });
-      testClassificationId = created.id;
+      testClassificationIds.push(created.id);
 
       const updates = {
         relevance_score: 92.5,
@@ -330,7 +333,7 @@ describe('Classifications Model', () => {
         ai_model_used: 'gpt-4-turbo',
       };
 
-      const { data, error } = await Classification.update(testClassificationId, updates);
+      const { data, error } = await Classification.update(created.id, updates);
 
       expect(error).toBeNull();
       expect(data).toBeDefined();
@@ -344,9 +347,9 @@ describe('Classifications Model', () => {
         ...testClassificationData,
         company_id: testCompanyId,
       });
-      testClassificationId = created.id;
+      testClassificationIds.push(created.id);
 
-      const { data, error } = await Classification.update(testClassificationId, {
+      const { data, error } = await Classification.update(created.id, {
         relevance_score: 150,
       });
 
@@ -362,19 +365,19 @@ describe('Classifications Model', () => {
         ...testClassificationData,
         company_id: testCompanyId,
       });
-      testClassificationId = created.id;
+      testClassificationIds.push(created.id);
 
-      const { data, error } = await Classification.delete(testClassificationId);
+      const { data, error } = await Classification.delete(created.id);
 
       expect(error).toBeNull();
       expect(data).toBeDefined();
-      expect(data.id).toBe(testClassificationId);
+      expect(data.id).toBe(created.id);
 
       // Verify deletion
-      const { data: found } = await Classification.findById(testClassificationId);
+      const { data: found } = await Classification.findById(created.id);
       expect(found).toBeNull();
 
-      testClassificationId = null; // Prevent double deletion
+      testClassificationIds = testClassificationIds.filter(id => id !== created.id); // Remove from tracking
     }, 10000);
   });
 
