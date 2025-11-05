@@ -86,8 +86,8 @@
             "title": "Implementar schema companies com índices",
             "description": "Criar tabela companies com todos os campos necessários e configurar índices para performance",
             "dependencies": [1],
-            "details": "Criar tabela companies com campos: id (UUID, primary key), name (text), website (text), location (text), size (enum), segment (text), revenue_estimate (numeric), created_at (timestamp). Criar índices em location, size, segment para otimizar consultas de filtros",
-            "status": "pending",
+            "details": "Criar tabela companies com campos: id (UUID, primary key), name (text), website (text), location (text), size (enum), segment (text), revenue_estimate (numeric), created_at (timestamp). Criar índices em location, size, segment para otimizar consultas de filtros\n<info added on 2025-11-05T03:11:47.414Z>\nMigration no Supabase definindo enum company_size e a tabela companies com índices em location, size, segment e created_at validada via EXPLAIN ANALYZE (Bitmap Index Scan). Modelo src/models/Company.js implementado com os métodos findAll, findById, create, update, delete e count, incluindo validação do enum size. Testes em tests/companies.test.js cobrem filtros e operações CRUD com 16 casos passando, garantindo 94.44% de cobertura para src/models/Company.js e nenhum erro de lint. Próximo passo: implementar o schema contacts (subtarefa 2.3).\n</info added on 2025-11-05T03:11:47.414Z>",
+            "status": "done",
             "testStrategy": "Inserir dados de teste na tabela companies, verificar se índices estão funcionando com EXPLAIN ANALYZE",
             "parentId": "undefined"
           },
@@ -1305,7 +1305,7 @@
       "tags": ["master"],
       "created": "2025-11-05T02:25:02.538Z",
       "description": "Tasks for master context",
-      "updated": "2025-11-05T03:06:19.928Z"
+      "updated": "2025-11-05T03:10:07.266Z"
     }
   }
 }
