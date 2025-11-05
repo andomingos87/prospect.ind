@@ -96,8 +96,8 @@
             "title": "Implementar schema contacts com relacionamentos",
             "description": "Criar tabela contacts com foreign key para companies e todos os campos necessários",
             "dependencies": [2],
-            "details": "Criar tabela contacts com campos: id (UUID, primary key), company_id (UUID, foreign key para companies), email (text), phone (text), linkedin (text), type (enum). Configurar relacionamento com ON DELETE CASCADE e índice em company_id",
-            "status": "pending",
+            "details": "Criar tabela contacts com campos: id (UUID, primary key), company_id (UUID, foreign key para companies), email (text), phone (text), linkedin (text), type (enum). Configurar relacionamento com ON DELETE CASCADE e índice em company_id\n<info added on 2025-11-05T03:17:23.352Z>\nMigração aplicada no Supabase criando o enum contact_type (decision_maker, influencer, technical, procurement, other), a tabela contacts com id UUID, company_id com ON DELETE CASCADE, email, phone, linkedin, type e created_at, mais índices específicos para company_id, type, email (parcial) e created_at. Implementação consolidada em src/models/Contact.js com os métodos findAll, findByCompanyId, findById, create, update, delete e count, incluindo validações do enum e verificação de foreign key antes de persistir dados. Testes em tests/contacts.test.js cobrem 18 cenários (CRUD, filtros, validações e CASCADE delete via Company.delete) com 100% de sucesso e cobertura registrada em coverage/lcov-report/models/Contact.js.html (88,88%), sem apontar erros de lint e confirmando a integridade referencial. Próximo passo: iniciar o schema classifications (subtarefa 2.4).\n</info added on 2025-11-05T03:17:23.352Z>",
+            "status": "done",
             "testStrategy": "Inserir contatos vinculados a empresas, testar relacionamento e integridade referencial",
             "parentId": "undefined"
           },
@@ -1305,7 +1305,7 @@
       "tags": ["master"],
       "created": "2025-11-05T02:25:02.538Z",
       "description": "Tasks for master context",
-      "updated": "2025-11-05T03:10:07.266Z"
+      "updated": "2025-11-05T03:15:11.742Z"
     }
   }
 }
