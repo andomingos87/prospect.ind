@@ -6,6 +6,16 @@ yarn-debug.log*
 yarn-error.log*
 dev-debug.log
 
+# Task Master AI
+.taskmaster/
+.taskmaster/tasks/
+.taskmaster/docs/
+.taskmaster/reports/
+.taskmaster/templates/
+.taskmaster/config.json
+.taskmaster/tasks.json
+.taskmaster/tasks/*.txt
+
 # Dependency directories
 node_modules/
 
