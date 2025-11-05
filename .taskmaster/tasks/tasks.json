@@ -116,8 +116,8 @@
             "title": "Configurar RLS policies para LGPD",
             "description": "Implementar Row Level Security policies para garantir compliance com LGPD",
             "dependencies": [2, 3, 4],
-            "details": "Habilitar RLS em todas as tabelas, criar policies para permitir acesso apenas a usuários autenticados, implementar políticas de delete/update restritivas, configurar audit trail para operações de dados pessoais, documentar políticas de retenção de dados",
-            "status": "pending",
+            "details": "Habilitar RLS em todas as tabelas, criar policies para permitir acesso apenas a usuários autenticados, implementar políticas de delete/update restritivas, configurar audit trail para operações de dados pessoais, documentar políticas de retenção de dados\n<info added on 2025-11-05T03:26:59.526Z>\nRLS habilitado e validado nas tabelas `public.companies`, `public.contacts` e `public.classifications`, com policies para SELECT/INSERT/UPDATE/DELETE configuradas para a role `anon` e restrições de DELETE compatíveis com LGPD; documentação técnica e comentários SQL consolidados em `docs/RLS_LGPD.md`. Supabase Security Advisor retornou 0 alertas, `rls_enabled` confirmado como `true` em todas as tabelas e suíte de testes permanece com 59/59 execuções (cobertura 90,78% para models). Para produção, planejar adoção de `service_role` no backend com autenticação Supabase Auth, revisar policies por role de negócio e avaliar soft deletes e trilha de auditoria dedicada antes do go-live.\n</info added on 2025-11-05T03:26:59.526Z>",
+            "status": "done",
             "testStrategy": "Testar acesso com usuários autenticados e não autenticados, verificar se policies bloqueiam acessos não autorizados",
             "parentId": "undefined"
           }
@@ -1305,7 +1305,7 @@
       "tags": ["master"],
       "created": "2025-11-05T02:25:02.538Z",
       "description": "Tasks for master context",
-      "updated": "2025-11-05T03:20:41.167Z"
+      "updated": "2025-11-05T03:26:14.855Z"
     }
   }
 }
