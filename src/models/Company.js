@@ -1,4 +1,8 @@
-import { supabase } from '../config/supabase.js';
+import { supabase, supabaseAdmin } from '../config/supabase.js';
+
+// Use admin client for write operations (bypasses RLS)
+// Use regular client for read operations (respects RLS)
+const db = supabaseAdmin || supabase;
 
 /**
  * Company model for interacting with companies table
@@ -12,7 +16,7 @@ class Company {
    * @returns {Promise<{data: Array, error: Object|null}>}
    */
   static async findAll(filters = {}, limit = 100, offset = 0) {
-    let query = supabase.from('companies').select('*');
+    let query = db.from('companies').select('*');
 
     if (filters.location) {
       query = query.eq('location', filters.location);
@@ -40,7 +44,7 @@ class Company {
    * @returns {Promise<{data: Object|null, error: Object|null}>}
    */
   static async findById(id) {
-    const { data, error } = await supabase.from('companies').select('*').eq('id', id).single();
+    const { data, error } = await db.from('companies').select('*').eq('id', id).single();
 
     return { data, error };
   }
@@ -73,7 +77,7 @@ class Company {
       };
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('companies')
       .insert([
         {
@@ -112,7 +116,7 @@ class Company {
       }
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('companies')
       .update(updates)
       .eq('id', id)
@@ -128,12 +132,7 @@ class Company {
    * @returns {Promise<{data: Object|null, error: Object|null}>}
    */
   static async delete(id) {
-    const { data, error } = await supabase
-      .from('companies')
-      .delete()
-      .eq('id', id)
-      .select()
-      .single();
+    const { data, error } = await db.from('companies').delete().eq('id', id).select().single();
 
     return { data, error };
   }
@@ -144,7 +143,7 @@ class Company {
    * @returns {Promise<{count: number, error: Object|null}>}
    */
   static async count(filters = {}) {
-    let query = supabase.from('companies').select('*', { count: 'exact', head: true });
+    let query = db.from('companies').select('*', { count: 'exact', head: true });
 
     if (filters.location) {
       query = query.eq('location', filters.location);

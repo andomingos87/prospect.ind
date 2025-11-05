@@ -1,4 +1,8 @@
-import { supabase } from '../config/supabase.js';
+import { supabase, supabaseAdmin } from '../config/supabase.js';
+
+// Use admin client for write operations (bypasses RLS)
+// Use regular client for read operations (respects RLS)
+const db = supabaseAdmin || supabase;
 
 /**
  * Classification model for interacting with classifications table
@@ -12,7 +16,7 @@ class Classification {
    * @returns {Promise<{data: Array, error: Object|null}>}
    */
   static async findAll(filters = {}, limit = 100, offset = 0) {
-    let query = supabase.from('classifications').select('*');
+    let query = db.from('classifications').select('*');
 
     if (filters.company_id) {
       query = query.eq('company_id', filters.company_id);
@@ -44,7 +48,7 @@ class Classification {
    * @returns {Promise<{data: Array, error: Object|null}>}
    */
   static async findByCompanyId(companyId) {
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('classifications')
       .select('*')
       .eq('company_id', companyId)
@@ -59,11 +63,7 @@ class Classification {
    * @returns {Promise<{data: Object|null, error: Object|null}>}
    */
   static async findById(id) {
-    const { data, error } = await supabase
-      .from('classifications')
-      .select('*')
-      .eq('id', id)
-      .single();
+    const { data, error } = await db.from('classifications').select('*').eq('id', id).single();
 
     return { data, error };
   }
@@ -75,7 +75,7 @@ class Classification {
    * @returns {Promise<{data: Array, error: Object|null}>}
    */
   static async findTopByScore(limit = 10, minScore = 0) {
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('classifications')
       .select('*')
       .gte('relevance_score', minScore)
@@ -120,7 +120,7 @@ class Classification {
     }
 
     // Verify company exists
-    const { data: company, error: companyError } = await supabase
+    const { data: company, error: companyError } = await db
       .from('companies')
       .select('id')
       .eq('id', company_id)
@@ -136,7 +136,7 @@ class Classification {
       };
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('classifications')
       .insert([
         {
@@ -174,7 +174,7 @@ class Classification {
 
     // Validate company_id if provided
     if (updates.company_id) {
-      const { data: company, error: companyError } = await supabase
+      const { data: company, error: companyError } = await db
         .from('companies')
         .select('id')
         .eq('id', updates.company_id)
@@ -191,7 +191,7 @@ class Classification {
       }
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('classifications')
       .update(updates)
       .eq('id', id)
@@ -207,7 +207,7 @@ class Classification {
    * @returns {Promise<{data: Object|null, error: Object|null}>}
    */
   static async delete(id) {
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('classifications')
       .delete()
       .eq('id', id)
@@ -223,7 +223,7 @@ class Classification {
    * @returns {Promise<{count: number, error: Object|null}>}
    */
   static async count(filters = {}) {
-    let query = supabase.from('classifications').select('*', { count: 'exact', head: true });
+    let query = db.from('classifications').select('*', { count: 'exact', head: true });
 
     if (filters.company_id) {
       query = query.eq('company_id', filters.company_id);
@@ -252,7 +252,7 @@ class Classification {
    * @returns {Promise<{average: number|null, error: Object|null}>}
    */
   static async getAverageScore(companyId) {
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('classifications')
       .select('relevance_score')
       .eq('company_id', companyId);

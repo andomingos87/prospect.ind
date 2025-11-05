@@ -10,36 +10,36 @@ Todas as tabelas do sistema (`companies`, `contacts`, `classifications`) têm RL
 
 ### Tabela: `companies`
 
-- **SELECT**: Permitido para role `anon` (leitura de dados)
-- **INSERT**: Permitido para role `anon` (criação de empresas)
-- **UPDATE**: Permitido para role `anon` (atualização de dados)
-- **DELETE**: Permitido para role `anon` com condições (compliance LGPD)
+- **SELECT**: Permitido para role `anon` (apenas leitura pública, se necessário)
+- **INSERT**: Bloqueado para role `anon` - Backend deve usar `service_role` key
+- **UPDATE**: Bloqueado para role `anon` - Backend deve usar `service_role` key
+- **DELETE**: Bloqueado para role `anon` - Backend deve usar `service_role` key
 
 ### Tabela: `contacts`
 
-- **SELECT**: Permitido para role `anon` (leitura de contatos)
-- **INSERT**: Permitido para role `anon` (criação de contatos)
-- **UPDATE**: Permitido para role `anon` (atualização de contatos)
-- **DELETE**: Permitido para role `anon` com condições (compliance LGPD)
+- **SELECT**: Permitido para role `anon` (apenas leitura pública, se necessário)
+- **INSERT**: Bloqueado para role `anon` - Backend deve usar `service_role` key
+- **UPDATE**: Bloqueado para role `anon` - Backend deve usar `service_role` key
+- **DELETE**: Bloqueado para role `anon` - Backend deve usar `service_role` key
 
 ### Tabela: `classifications`
 
-- **SELECT**: Permitido para role `anon` (leitura de classificações)
-- **INSERT**: Permitido para role `anon` (criação de classificações)
-- **UPDATE**: Permitido para role `anon` (atualização de classificações)
-- **DELETE**: Permitido para role `anon` com condições (audit trail)
+- **SELECT**: Permitido para role `anon` (apenas leitura pública, se necessário)
+- **INSERT**: Bloqueado para role `anon` - Backend deve usar `service_role` key
+- **UPDATE**: Bloqueado para role `anon` - Backend deve usar `service_role` key
+- **DELETE**: Bloqueado para role `anon` - Backend deve usar `service_role` key
 
 ## Considerações de Segurança
 
 ### Ambiente de Desenvolvimento
 
-As políticas atuais permitem acesso usando a `anon` key, o que é adequado para desenvolvimento e testes.
+**IMPORTANTE**: As políticas foram atualizadas por questões de segurança. O backend agora usa `SUPABASE_SERVICE_KEY` para todas as operações de escrita/modificação. A role `anon` tem acesso apenas de leitura (SELECT) nas tabelas, se necessário.
 
 ### Ambiente de Produção
 
-Para produção, recomenda-se:
+**OBRIGATÓRIO**:
 
-1. **Usar Service Role Key no Backend**: O backend da aplicação deve usar a `service_role` key para operações administrativas, não a `anon` key.
+1. **Usar Service Role Key no Backend**: O backend da aplicação **DEVE** usar a `service_role` key (`SUPABASE_SERVICE_KEY`) para todas as operações administrativas. A `anon` key não permite operações de escrita/modificação/exclusão.
 
 2. **Autenticação de Usuários**: Implementar autenticação adequada (Supabase Auth) e ajustar as policies para considerar o contexto do usuário autenticado.
 

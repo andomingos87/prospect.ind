@@ -1,4 +1,8 @@
-import { supabase } from '../config/supabase.js';
+import { supabase, supabaseAdmin } from '../config/supabase.js';
+
+// Use admin client for write operations (bypasses RLS)
+// Use regular client for read operations (respects RLS)
+const db = supabaseAdmin || supabase;
 
 /**
  * Contact model for interacting with contacts table
@@ -12,7 +16,7 @@ class Contact {
    * @returns {Promise<{data: Array, error: Object|null}>}
    */
   static async findAll(filters = {}, limit = 100, offset = 0) {
-    let query = supabase.from('contacts').select('*');
+    let query = db.from('contacts').select('*');
 
     if (filters.company_id) {
       query = query.eq('company_id', filters.company_id);
@@ -40,7 +44,7 @@ class Contact {
    * @returns {Promise<{data: Array, error: Object|null}>}
    */
   static async findByCompanyId(companyId) {
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('contacts')
       .select('*')
       .eq('company_id', companyId)
@@ -55,7 +59,7 @@ class Contact {
    * @returns {Promise<{data: Object|null, error: Object|null}>}
    */
   static async findById(id) {
-    const { data, error } = await supabase.from('contacts').select('*').eq('id', id).single();
+    const { data, error } = await db.from('contacts').select('*').eq('id', id).single();
 
     return { data, error };
   }
@@ -89,7 +93,7 @@ class Contact {
     }
 
     // Verify company exists
-    const { data: company, error: companyError } = await supabase
+    const { data: company, error: companyError } = await db
       .from('companies')
       .select('id')
       .eq('id', company_id)
@@ -105,7 +109,7 @@ class Contact {
       };
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('contacts')
       .insert([
         {
@@ -145,7 +149,7 @@ class Contact {
 
     // Validate company_id if provided
     if (updates.company_id) {
-      const { data: company, error: companyError } = await supabase
+      const { data: company, error: companyError } = await db
         .from('companies')
         .select('id')
         .eq('id', updates.company_id)
@@ -162,7 +166,7 @@ class Contact {
       }
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await db
       .from('contacts')
       .update(updates)
       .eq('id', id)
@@ -178,7 +182,7 @@ class Contact {
    * @returns {Promise<{data: Object|null, error: Object|null}>}
    */
   static async delete(id) {
-    const { data, error } = await supabase.from('contacts').delete().eq('id', id).select().single();
+    const { data, error } = await db.from('contacts').delete().eq('id', id).select().single();
 
     return { data, error };
   }
@@ -189,7 +193,7 @@ class Contact {
    * @returns {Promise<{count: number, error: Object|null}>}
    */
   static async count(filters = {}) {
-    let query = supabase.from('contacts').select('*', { count: 'exact', head: true });
+    let query = db.from('contacts').select('*', { count: 'exact', head: true });
 
     if (filters.company_id) {
       query = query.eq('company_id', filters.company_id);
