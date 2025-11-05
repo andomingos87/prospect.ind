@@ -106,8 +106,8 @@
             "title": "Implementar schema classifications",
             "description": "Criar tabela classifications para armazenar pontuações de relevância geradas por IA",
             "dependencies": [2],
-            "details": "Criar tabela classifications com campos: id (UUID, primary key), company_id (UUID, foreign key para companies), relevance_score (numeric), reason (text), ai_model_used (text), created_at (timestamp). Configurar índices em company_id e relevance_score",
-            "status": "pending",
+            "details": "Criar tabela classifications com campos: id (UUID, primary key), company_id (UUID, foreign key para companies), relevance_score (numeric), reason (text), ai_model_used (text), created_at (timestamp). Configurar índices em company_id e relevance_score\n<info added on 2025-11-05T03:23:13.634Z>\nMigration Supabase executada cria a tabela classifications com company_id em ON DELETE CASCADE, constraint CHECK garantindo relevance_score entre 0 e 100 e índices em company_id, relevance_score (DESC), created_at (DESC) e ai_model_used (parcial); implementação consolidada em src/models/Classification.js com os métodos findAll, findByCompanyId, findById, findTopByScore, create, update, delete, count e getAverageScore incluindo validações de faixa e verificação explícita da foreign key; cobertura de filtros e operações validada pelos 25 testes em tests/classifications.test.js (incluindo cascata e média) com taxa de 90% registrada em coverage/lcov-report/models/Classification.js.html e lint sem apontamentos; próximo passo: avançar para as RLS da subtarefa 2.5.\n</info added on 2025-11-05T03:23:13.634Z>",
+            "status": "done",
             "testStrategy": "Inserir classificações de teste, verificar relacionamento com companies e performance de consultas por score",
             "parentId": "undefined"
           },
@@ -1305,7 +1305,7 @@
       "tags": ["master"],
       "created": "2025-11-05T02:25:02.538Z",
       "description": "Tasks for master context",
-      "updated": "2025-11-05T03:15:11.742Z"
+      "updated": "2025-11-05T03:20:41.167Z"
     }
   }
 }
